@@ -1,5 +1,5 @@
 // ----- AUTO GENERATED CODE - ANY MODIFICATION WILL BE OVERRIDEN ----- //
-// ----- GENERATED ON 2020-02-28 01:56:29.273120600 -05:00 ----- //
+// ----- GENERATED ON 2020-02-28 02:13:18.737124 -05:00 ----- //
 
 /*
  * To add an object to the Finder, add a "Findable" attribute to the class :
@@ -45,7 +45,7 @@ namespace Harmony
         {
             get
             {
-                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>("NavigationMesh");
+                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>(R.S.Tag.NavigationMesh);
                 return findableNavigationMesh;
             }
         }
@@ -54,7 +54,7 @@ namespace Harmony
         {
             get
             {
-                if (!findablePathFinder) findablePathFinder = FindWithTag<Harmony.PathFinder>("NavigationMesh");
+                if (!findablePathFinder) findablePathFinder = FindWithTag<Harmony.PathFinder>(R.S.Tag.NavigationMesh);
                 return findablePathFinder;
             }
         }

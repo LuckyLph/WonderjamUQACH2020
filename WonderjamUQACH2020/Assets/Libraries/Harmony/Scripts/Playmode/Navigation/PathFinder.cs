@@ -9,7 +9,7 @@ namespace Harmony
     /// <summary>
     /// PathFinder. Uses the A* algorithm.
     /// </summary>
-    //[Findable("NavigationMesh")]
+    [Findable(R.S.Tag.NavigationMesh)]
     public sealed class PathFinder : MonoBehaviour
     {
         private NavigationMesh navigationMesh;
