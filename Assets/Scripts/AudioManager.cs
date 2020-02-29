@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void StopSound()
+    public void StopSound(string name)
     {
         CustomAudio s = System.Array.Find(audioClips, (customSound) => customSound.name == name);
 

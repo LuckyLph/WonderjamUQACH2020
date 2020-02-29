@@ -86,3 +86,66 @@ MonoBehaviour:
     pitch: 1
     timeToStart: 0.065
     source: {fileID: 0}
+  - name: fire_uzi1
+    audioClip: {fileID: 8300000, guid: 4148d57d36b7aa147a1afda21384fadd, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_uzi2
+    audioClip: {fileID: 8300000, guid: 842bf5e44bb93694587f7b910afb719a, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_uzi3
+    audioClip: {fileID: 8300000, guid: ed89f1e431f2fee4b8248aa15c22bd3f, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_uzi4
+    audioClip: {fileID: 8300000, guid: ad06a3542251f954b92b5e104c25698b, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_uzi5
+    audioClip: {fileID: 8300000, guid: 33a71496743051247934752afca49499, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_gun1
+    audioClip: {fileID: 8300000, guid: d70f85baa94dba74bba10abdee98fc7b, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: fire_gun2
+    audioClip: {fileID: 8300000, guid: 52e4885a4c21c434f893dd52060871a4, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: zombie_hit
+    audioClip: {fileID: 8300000, guid: 0d4e3f83c2001544aa56e4966686be3c, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 0.5
+    timeToStart: 0.25
+    source: {fileID: 0}
+  - name: no_ammo
+    audioClip: {fileID: 8300000, guid: b352024c9bd07cf498ae72a9f3975093, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}

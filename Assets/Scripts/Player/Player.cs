@@ -18,7 +18,14 @@ public class Player : MonoBehaviour
     public float roundPerMin;
     private float DelayUntilNextShot = 0;
 
+    private AudioManager audioManager;
+
+
+
     void Awake(){
+
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+
         controls = new PlayerControls();
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
@@ -83,18 +90,47 @@ public class Player : MonoBehaviour
     }
 
     void Shoot(){
-        if (ammunition == 0)
+        if (DelayUntilNextShot >= 0)
         {
-            //play sound dont shoot me im am a good boy
-        }else if(DelayUntilNextShot >= 0){
             return;
+        }
+        else if(ammunition == 0)
+        {
+            this.audioManager.StopSound("no_ammo"); //inutile?
+            this.audioManager.PlaySound("no_ammo");
+            DelayUntilNextShot = 60 / roundPerMin;
         }else{
-            shake.TriggerShake();
+            this.playRandomUziSound();
+            //shake.TriggerShake();
             DelayUntilNextShot = 60/roundPerMin;
             ammunition--;
             spread = new Vector3(0, 0, Random.Range(-spreadRange, spreadRange));
             GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
             bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * bulletInstance.GetComponent<Bullet>().bulletSpeed;
+        }
+    }
+
+    private void playRandomUziSound()
+    {
+        switch (Random.Range(0,4))
+        {
+            case 0:
+                this.audioManager.PlaySound("fire_uzi1");
+                break;
+            case 1:
+                this.audioManager.PlaySound("fire_uzi2");
+                break;
+            case 2:
+                this.audioManager.PlaySound("fire_uzi3");
+                break;
+            case 3:
+                this.audioManager.PlaySound("fire_uzi4");
+                break;
+            case 4:
+                this.audioManager.PlaySound("fire_uzi5");
+                break;
+            default:
+                break;
         }
     }
 

@@ -7,6 +7,13 @@ public class Bullet : MonoBehaviour
     public int bulletDamage;
     public float bulletTime, bulletSpeed;
     // Start is called before the first frame update
+
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+    }
     void Start()
     {
         Destroy(gameObject, bulletTime);
@@ -37,7 +44,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    /*
+    
     void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.tag == "Enemy")
         {
@@ -56,5 +63,5 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    */
+    
 }
