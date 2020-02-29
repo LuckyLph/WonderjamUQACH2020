@@ -157,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -319,4 +319,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenebundles:
   - {fileID: 11400000, guid: f238475189ef28044a612c6a25b3b7ef, type: 2}
-  - {fileID: 11400000, guid: 4c24efc0d727821419d9bc356ec3ae15, type: 2}
+  - {fileID: 11400000, guid: 14cedafca253c024faff7c37cc0fe839, type: 2}
