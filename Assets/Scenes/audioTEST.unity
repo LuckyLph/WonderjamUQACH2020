@@ -176,6 +176,7 @@ MonoBehaviour:
   health: 0
   ammunition: 0
   roundPerMin: 0
+  secBetweenSteps: 0.5
 --- !u!50 &207776101
 Rigidbody2D:
   serializedVersion: 4
