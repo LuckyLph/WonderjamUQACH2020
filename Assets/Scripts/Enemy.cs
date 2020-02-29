@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void takeDamage(int damage){
+    public void TakeDamage(int damage){
         this.health -= damage;
         if (this.health <= 0)
         {

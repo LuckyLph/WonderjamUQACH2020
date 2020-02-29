@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     private Rigidbody2D rb;
     Vector2 move, aimJ, aimM;
-    //Vector2 movement;
+    private int health;
 
     void Awake(){
         controls = new PlayerControls();
@@ -65,7 +65,13 @@ public class Player : MonoBehaviour
         bulletInstance.GetComponent<Rigidbody2D>().velocity = firePoint.up * bulletInstance.GetComponent<Bullet>().bulletSpeed;
     }
 
-
+    public void takeDamage(int damage){
+        this.health -= damage;
+        if (this.health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void OnEnable(){
         controls.Gameplay.Enable();
