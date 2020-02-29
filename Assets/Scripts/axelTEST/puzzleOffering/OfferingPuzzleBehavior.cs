@@ -90,7 +90,6 @@ public class OfferingPuzzleBehavior : MonoBehaviour
 
     public void checkPuzzle(bool useless)
     {
-        Debug.Log("EVENT !!");
         foreach (GameObject jewel in this.jewels)
         {
             if (!jewel.GetComponent<CarryJewels>().isPlaced)
