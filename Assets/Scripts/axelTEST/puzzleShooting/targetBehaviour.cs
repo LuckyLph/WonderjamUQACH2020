@@ -25,6 +25,8 @@ public class targetBehaviour : MonoBehaviour
         }
     }
 
+    public bool puzzleSolved = false;
+
     private SpriteRenderer whiteChild1;
     private SpriteRenderer whiteChild2;
 
@@ -34,9 +36,30 @@ public class targetBehaviour : MonoBehaviour
         this.whiteChild1 = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.whiteChild2 = this.transform.GetChild(2).GetComponent<SpriteRenderer>();
     }
+    public void TakeDamage(int damage)
+    {
+        if (this.puzzleSolved)
+        {
+            return;
+        }
+
+        if (!this.isActive)
+        {
+            this.remainingTimeInSec = this.activationTimeInSec;
+            this.Activate();
+            StartCoroutine(this.startTimer());
+        } else
+        {
+            this.remainingTimeInSec = this.activationTimeInSec;
+        }
+    }
 
     private void Activate()
     {
+        if (this.puzzleSolved)
+        {
+            return;
+        }
         this.isActive = true;
         this.whiteChild1.color = Color.green;
         this.whiteChild2.color = Color.green;
@@ -44,24 +67,19 @@ public class targetBehaviour : MonoBehaviour
 
     private void Deactivate()
     {
+        if (this.puzzleSolved)
+        {
+            return;
+        }
         this.isActive = false;
         this.whiteChild1.color = Color.white;
         this.whiteChild2.color = Color.white;
     }
 
-    public void TakeDamage(int damage)
-    {
-        if (!this.isActive)
-        {
-            this.remainingTimeInSec = this.activationTimeInSec;
-            this.Activate();
-            StartCoroutine(this.startTimer());
-        }
-    }
 
     private void TellParent()
     {
-
+        this.GetComponentInParent<ShootPuzzleBehaviour>().targetActivated(this.gameObject);
     }
 
     IEnumerator startTimer()
