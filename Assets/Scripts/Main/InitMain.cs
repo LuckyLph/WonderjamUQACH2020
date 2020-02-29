@@ -10,9 +10,9 @@ public class InitMain : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("HUD"));
-        }
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("HUD"));
+        //}
     }
 }
