@@ -1,5 +1,5 @@
 // ----- AUTO GENERATED CODE - ANY MODIFICATION WILL BE OVERRIDEN ----- //
-// ----- GENERATED ON 2020-02-29 14:38:11.834758600 -05:00 ----- //
+// ----- GENERATED ON 2020-02-29 15:44:27.673329200 -05:00 ----- //
 
 /*
  * To add an object to the Finder, add a "Findable" attribute to the class :
@@ -28,18 +28,18 @@ namespace Harmony
 {
     public static class Finder
     {
-        private static Harmony.SqLiteConnectionFactory findableSqLiteConnectionFactory = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Database\SqLiteConnectionFactory.cs, line 13.
-        private static Harmony.SceneBundleLoader findableSceneBundleLoader = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Scene\SceneBundleLoader.cs, line 12.
         private static Harmony.NavigationMesh findableNavigationMesh = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\NavigationMesh.cs, line 12.
-        private static Harmony.PathFinder findablePathFinder = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\PathFinder.cs, line 13.
+        private static Harmony.SceneBundleLoader findableSceneBundleLoader = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Scene\SceneBundleLoader.cs, line 12.
         private static SceneBundlesReference findableSceneBundlesReference = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Scene\SceneBundlesReference.cs, line 5.
+        private static Harmony.PathFinder findablePathFinder = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\PathFinder.cs, line 13.
+        private static Harmony.SqLiteConnectionFactory findableSqLiteConnectionFactory = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Database\SqLiteConnectionFactory.cs, line 13.
     
-        public static Harmony.SqLiteConnectionFactory SqLiteConnectionFactory
+        public static Harmony.NavigationMesh NavigationMesh
         {
             get
             {
-                if (!findableSqLiteConnectionFactory) findableSqLiteConnectionFactory = FindWithTag<Harmony.SqLiteConnectionFactory>(R.S.Tag.MainController);
-                return findableSqLiteConnectionFactory;
+                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>(R.S.Tag.NavigationMesh);
+                return findableNavigationMesh;
             }
         }
         
@@ -52,12 +52,12 @@ namespace Harmony
             }
         }
         
-        public static Harmony.NavigationMesh NavigationMesh
+        public static SceneBundlesReference SceneBundlesReference
         {
             get
             {
-                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>(R.S.Tag.NavigationMesh);
-                return findableNavigationMesh;
+                if (!findableSceneBundlesReference) findableSceneBundlesReference = FindWithTag<SceneBundlesReference>(R.S.Tag.MainController);
+                return findableSceneBundlesReference;
             }
         }
         
@@ -70,12 +70,12 @@ namespace Harmony
             }
         }
         
-        public static SceneBundlesReference SceneBundlesReference
+        public static Harmony.SqLiteConnectionFactory SqLiteConnectionFactory
         {
             get
             {
-                if (!findableSceneBundlesReference) findableSceneBundlesReference = FindWithTag<SceneBundlesReference>(R.S.Tag.MainController);
-                return findableSceneBundlesReference;
+                if (!findableSqLiteConnectionFactory) findableSqLiteConnectionFactory = FindWithTag<Harmony.SqLiteConnectionFactory>(R.S.Tag.MainController);
+                return findableSqLiteConnectionFactory;
             }
         }
         
