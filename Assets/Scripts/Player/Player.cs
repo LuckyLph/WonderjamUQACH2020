@@ -4,19 +4,21 @@ using UnityEngine;
 //using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
-    private ScreenShake shake;
     PlayerControls controls;
-    public float speed, spreadRange;
+    private ScreenShake shake;
     private Transform firePoint;
-    public GameObject bulletPrefab;
     private Rigidbody2D rb;
-    Vector2 move, aimJ, aimM;
-    public int health, ammunition;
+    private Vector2 move, aimJ, aimM;
     private bool MouseUse, isShooting;
+    private float DelayUntilNextShot = 0;
     private Vector3 spread;
+    
     [Range(1,10000)]
     public float roundPerMin;
-    private float DelayUntilNextShot = 0;
+    public int health, ammunition;
+    public GameObject bulletPrefab;
+    public float speed, spreadRange;
+    public Animator animator;
 
     void Awake(){
         controls = new PlayerControls();
