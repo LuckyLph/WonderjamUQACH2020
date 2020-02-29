@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [Range(1,10000)]
     public float roundPerMin;
     private float DelayUntilNextShot = 0;
+    [Range(0.1f,1f)]
+    public float secBetweenSteps = 0.5f;
+    private float secRemainingStep = 0f;
 
     private AudioManager audioManager;
 
@@ -66,6 +69,35 @@ public class Player : MonoBehaviour
 
     void Movement(){
         rb.velocity = new Vector2(move.x, move.y) * speed;
+        if(this.secRemainingStep <= 0 && rb.velocity != Vector2.zero)
+        {
+            this.TakeAStep();
+            this.secRemainingStep = this.secBetweenSteps;
+        } else
+        {
+            this.secRemainingStep -= Time.deltaTime;
+        }
+    }
+
+    private void TakeAStep()
+    {
+        switch (Random.Range(0,3))
+        {
+            case 0:
+                this.audioManager.PlaySound("player_step1");
+                break;
+            case 1:
+                this.audioManager.PlaySound("player_step2");
+                break;
+            case 2:
+                this.audioManager.PlaySound("player_step3");
+                break;
+            case 3:
+                this.audioManager.PlaySound("player_step4");
+                break;
+            default:
+                break;
+        }
     }
 
     void Aim(){

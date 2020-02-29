@@ -149,3 +149,31 @@ MonoBehaviour:
     pitch: 1
     timeToStart: 0
     source: {fileID: 0}
+  - name: player_step1
+    audioClip: {fileID: 8300000, guid: a4e9780d5b635c84e96e59a93ae7bb65, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: player_step2
+    audioClip: {fileID: 8300000, guid: edf24d2f78e7d1e4eb48623bf3ee42fd, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: player_step3
+    audioClip: {fileID: 8300000, guid: 3ead357b203d3bc4195cd037cf7e4052, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: player_step4
+    audioClip: {fileID: 8300000, guid: 5fb54fda390258243b456411d4d4989f, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
