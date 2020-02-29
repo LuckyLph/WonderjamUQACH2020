@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AI_Attack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  //public float timer;
+  //// Update is called once per frame
+  //void Update()
+  //{
+  //  timer -= Time.deltaTime;
+  //  if (timer <= 0.0f)
+  //  {
+  //    TimerEnded();
+  //  }
+  //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  //void TimerEnded()
+  //{
+  //  gameObject.GetComponent<BoxCollider2D>().enabled = true;
+  //}
+
+  private void OnTriggerEnter2D(Collider2D collider)
+  {
+
+  }
+
+  public void AttackEnded()
+  {
+    Destroy(gameObject);
+  }
 }
