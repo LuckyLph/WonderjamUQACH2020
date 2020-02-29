@@ -12,6 +12,7 @@ public class CustomAudio
     public float volume = 1;
     [Range(0.1f, 3)]
     public float pitch = 1;
+    public float timeToStart = 0f;
 
     [HideInInspector]
     public AudioSource source;
@@ -56,6 +57,7 @@ public class AudioManager : MonoBehaviour
 
         s.source.volume = s.volume;
         s.source.pitch = s.pitch;
+        s.source.time = s.timeToStart;
 
         s.source.Play();
     }
