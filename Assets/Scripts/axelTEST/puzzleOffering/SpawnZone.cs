@@ -45,10 +45,11 @@ public class SpawnZone : MonoBehaviour
         {
             GameObject spawned = Instantiate(this.prefabtoSpawn, this.positions[i], Quaternion.identity);
             spawned.GetComponent<SpriteRenderer>().color = colors[i];
-            if(spawned.tag == "Jewel")
+            if (spawned.tag == "Jewel")
             {
-            spawned.GetComponent<CarryJewels>().myColor = colors[i];
-
+                spawned.GetComponent<CarryJewels>().myColor = colors[i];
+                this.GetComponentInParent<OfferingPuzzleBehavior>().jewels.Add(spawned);
+                spawned.GetComponent<CarryJewels>().OnVariableChange += this.GetComponentInParent<OfferingPuzzleBehavior>().checkPuzzle;
             }
         }
     }

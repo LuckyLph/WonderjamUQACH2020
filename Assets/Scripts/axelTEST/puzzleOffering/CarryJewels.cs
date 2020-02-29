@@ -15,7 +15,28 @@ public class CarryJewels : MonoBehaviour
     [SerializeField]
     private bool isFollowing = false;
     [SerializeField]
-    private bool isPlaced = false;
+    private bool m_isPlaced = false;
+
+
+    public bool isPlaced
+    {
+        get
+        {
+            return m_isPlaced;
+        }
+        set
+        {
+            m_isPlaced = value;
+            if (OnVariableChange != null)
+                OnVariableChange(this.m_isPlaced);
+        }
+    }
+    public delegate void OnVariableChangeDelegate(bool newVal);
+    public event OnVariableChangeDelegate OnVariableChange;
+
+
+    [SerializeField]
+    private bool moving = true;
     [SerializeField]
     public Color myColor;
 
@@ -25,12 +46,12 @@ public class CarryJewels : MonoBehaviour
         {
             this.transform.position = Vector3.Lerp(this.transform.position, this.player.transform.position, speed);
         }
-        if (isPlaced)
+        if (isPlaced && moving)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, this.place.transform.position, speed);
             if(Vector2.Distance(this.transform.position, this.place.transform.position) <= distancePlace)
             {
-                this.isPlaced = false;
+                this.moving = false;
                 this.transform.position = this.place.transform.position;
                 this.player.GetComponent<IsCarrying>().isCarryingJewel = false;
             }
@@ -51,11 +72,8 @@ public class CarryJewels : MonoBehaviour
         }
         if (collision.gameObject.tag == "JewelPlace")
         {
-            Debug.Log(collision.gameObject.GetComponent<SpriteRenderer>().color);
-            Debug.Log(this.myColor);
             if(collision.gameObject.GetComponent<SpriteRenderer>().color == this.myColor)
             {
-                Debug.Log("Same Color !");
                 this.place = collision.gameObject;
                 this.place.GetComponent<SpriteRenderer>().color = new Color(this.place.GetComponent<SpriteRenderer>().color.r, this.place.GetComponent<SpriteRenderer>().color.g, this.place.GetComponent<SpriteRenderer>().color.b, 0.5f);
                 this.placed();

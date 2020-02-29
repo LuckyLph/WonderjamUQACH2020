@@ -10,9 +10,15 @@ public class OfferingPuzzleBehavior : MonoBehaviour
     [SerializeField]
     private List<Color> colors = new List<Color>();
 
+    [SerializeField]
+    public bool puzzleSolved = false;
+
     private List<Color> pureColors = new List<Color>();
     private GameObject SpawnZone;
     private GameObject PlacementZone;
+
+    [SerializeField]
+    public List<GameObject> jewels = new List<GameObject>();
 
     private void Awake()
     {
@@ -80,5 +86,18 @@ public class OfferingPuzzleBehavior : MonoBehaviour
     {
         this.SpawnZone.GetComponent<SpawnZone>().SpawnItems(this.itemQuantity,this.colors);
         this.PlacementZone.GetComponent<SpawnZone>().SpawnItems(this.itemQuantity,this.colors);
+    }
+
+    public void checkPuzzle(bool useless)
+    {
+        Debug.Log("EVENT !!");
+        foreach (GameObject jewel in this.jewels)
+        {
+            if (!jewel.GetComponent<CarryJewels>().isPlaced)
+            {
+                return;
+            }
+        }
+        this.puzzleSolved = true;
     }
 }
