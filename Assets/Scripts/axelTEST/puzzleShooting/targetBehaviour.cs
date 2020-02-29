@@ -43,13 +43,13 @@ public class targetBehaviour : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        this.audioManager.PlaySound("hit_target");
 
         if (this.puzzleSolved)
         {
             return;
         }
 
+        this.audioManager.PlaySound("hit_target");
 
         if (!this.isActive)
         {

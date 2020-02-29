@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
             DelayUntilNextShot = 60 / roundPerMin;
         }else{
             this.playRandomUziSound();
-            //shake.TriggerShake();
+            shake.TriggerShake();
             DelayUntilNextShot = 60/roundPerMin;
             ammunition--;
             spread = new Vector3(0, 0, Random.Range(-spreadRange, spreadRange));

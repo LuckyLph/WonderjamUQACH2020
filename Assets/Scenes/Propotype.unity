@@ -1139,6 +1139,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7477245619293280639, guid: 06d880df303d6df4695143d35c7dc8bd,
+        type: 3}
+      propertyPath: secondBetweenShakes
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06d880df303d6df4695143d35c7dc8bd, type: 3}
 --- !u!1 &281592385
@@ -1503,7 +1508,7 @@ MonoBehaviour:
     type: 3}
   health: 10
   ammunition: 2147483647
-  roundPerMin: 230
+  roundPerMin: 500
 --- !u!50 &622299763
 Rigidbody2D:
   serializedVersion: 4
