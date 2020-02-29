@@ -25,6 +25,11 @@ public class Bullet : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.takeDamage(this.bulletDamage);
             Destroy(this.gameObject);
+        } else if(other.gameObject.tag == "Target")
+        {
+            targetBehaviour target = other.gameObject.GetComponent<targetBehaviour>();
+            target.TakeDamage(this.bulletDamage);
+            Destroy(this.gameObject);
         }
     }
 }
