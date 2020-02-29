@@ -1,5 +1,5 @@
 // ----- AUTO GENERATED CODE - ANY MODIFICATION WILL BE OVERRIDEN ----- //
-// ----- GENERATED ON 2020-02-28 02:13:18.731108900 -05:00 ----- //
+// ----- GENERATED ON 2020-02-28 19:14:19.141655600 -05:00 ----- //
 
 /*
  * This file contains constants from :
@@ -24,58 +24,77 @@ namespace Harmony
         {
             public enum Tag
             {
-                Untagged = 75014779, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                Respawn = 74615215, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                Player = 37192756, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                EditorOnly = 71402144, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                NavigationMesh = 64083769, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 7.
-                Finish = 64315233, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                MainCamera = 38632605, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                GameController = 58339470, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
+                NavigationMesh = 64083769, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 7.
+                MainController = 10735634, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 8.
+                Respawn = 74615215, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                Finish = 64315233, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                MainCamera = 38632605, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                GameController = 58339470, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                Untagged = 75014779, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                EditorOnly = 71402144, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                Player = 37192756, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
             }
             public enum Layer
             {
-                Water = 17379352, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 13.
-                //Ignore Raycast is invalid. File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 11.
-                UI = 5562427, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 14.
-                TransparentFX = 15778512, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 10.
-                Default = 61255271, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 9.
+                TransparentFX = 15778512, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 11.
+                //Ignore Raycast is invalid. File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 12.
+                UI = 5562427, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 15.
+                Default = 61255271, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 10.
+                Water = 17379352, //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 14.
             }
             public enum Scene
             {
-                Main = 57510366, //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\Assets\Scenes\Main.unity.
+                Main = 57510366, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity.
+                Loadingscreen = 3149041, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Loadingscreen.unity.
+                bob = 95612632, //File C:\Users\LP\Documents\WonderJam2020\Assets\Prefabs\bob.unity.
+                HUD = 7182959, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\HUD.unity.
+                MainMenu = 10387227, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\MainMenu.unity.
             }
             public enum GameObject
             {
-                //Main Camera is invalid. File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\Assets\Scenes\Main.unity, line 135.
+                //Main Camera is invalid. File C:\Users\LP\Documents\WonderJam2020\Assets\Prefabs\bob.unity, line 136.
+                MainController = 10735634, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity, line 263.
+                Menu = 77641489, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\MainMenu.unity, line 134.
+                Initialization = 46761124, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity, line 218.
+                Canvas = 87856539, //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Loadingscreen.unity, line 134.
+                // is invalid. File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity, line 234.
             }
         }
         public static class S
         {
             public static class Tag
             {
-                public const string Untagged = "Untagged"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string Respawn = "Respawn"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string Player = "Player"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string EditorOnly = "EditorOnly"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string NavigationMesh = "NavigationMesh"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 7.
-                public const string Finish = "Finish"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string MainCamera = "MainCamera"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
-                public const string GameController = "GameController"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset.
+                public const string NavigationMesh = "NavigationMesh"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 7.
+                public const string MainController = "MainController"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 8.
+                public const string Respawn = "Respawn"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string Finish = "Finish"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string MainCamera = "MainCamera"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string GameController = "GameController"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string Untagged = "Untagged"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string EditorOnly = "EditorOnly"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
+                public const string Player = "Player"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset.
             }
             public static class Layer
             {
-                public const string Water = "Water"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 13.
-                public const string UI = "UI"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 14.
-                public const string TransparentFX = "TransparentFX"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 10.
-                public const string Default = "Default"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\ProjectSettings\TagManager.asset, line 9.
+                public const string TransparentFX = "TransparentFX"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 11.
+                public const string UI = "UI"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 15.
+                public const string Default = "Default"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 10.
+                public const string Water = "Water"; //File C:\Users\LP\Documents\WonderJam2020\ProjectSettings\TagManager.asset, line 14.
             }
             public static class Scene
             {
-                public const string Main = "Main"; //File C:\Users\lphud\Documents\Projects\WonderjamUQACH2020\WonderjamUQACH2020\Assets\Scenes\Main.unity.
+                public const string Main = "Main"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity.
+                public const string Loadingscreen = "Loadingscreen"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Loadingscreen.unity.
+                public const string bob = "bob"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Prefabs\bob.unity.
+                public const string HUD = "HUD"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\HUD.unity.
+                public const string MainMenu = "MainMenu"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\MainMenu.unity.
             }
             public static class GameObject
             {
+                public const string MainController = "MainController"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity, line 263.
+                public const string Menu = "Menu"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\MainMenu.unity, line 134.
+                public const string Initialization = "Initialization"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Main.unity, line 218.
+                public const string Canvas = "Canvas"; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scenes\Loadingscreen.unity, line 134.
             }
         }
     }

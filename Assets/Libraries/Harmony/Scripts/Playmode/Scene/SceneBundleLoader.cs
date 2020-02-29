@@ -8,6 +8,7 @@ namespace Harmony
     /// <summary>
     /// Scene Bundle loader. Used to load scene bundles.
     /// </summary>
+    [Findable(R.S.Tag.MainController)]
     public class SceneBundleLoader : MonoBehaviour
     {
         private bool isLoadingWorld;
@@ -33,6 +34,9 @@ namespace Harmony
         /// </summary>
         public event EventHandler<SceneBundle> OnUnloadingEnded;
 
+        public event EventHandler<SceneBundle, SceneBundle> OnSwitchingStarted;
+        public event EventHandler<SceneBundle, SceneBundle> OnSwitchingEnded;
+
         /// <summary>
         /// Is a Scene Bundle currently loading ?
         /// </summary>
@@ -41,7 +45,7 @@ namespace Harmony
         /// <summary>
         /// Is a Scene Bundle currently unloading ?
         /// </summary>
-        public bool IsUnloadingWorld1 => isUnloadingWorld;
+        public bool IsUnloadingWorld => isUnloadingWorld;
 
         /// <summary>
         /// Tells if a Scene Bundle is loading or unloading.
@@ -59,7 +63,11 @@ namespace Harmony
         /// <param name="sceneBundle">Scene Bundle</param>
         public void Load(SceneBundle sceneBundle)
         {
-            StartCoroutine(LoadRoutine(sceneBundle));
+            if (sceneBundle != null)
+            {
+                StartCoroutine(LoadRoutine(sceneBundle));
+            }
+                
         }
 
         /// <summary>
@@ -72,7 +80,10 @@ namespace Harmony
         /// <param name="sceneBundle">Scene Bundle</param>
         public void Unload(SceneBundle sceneBundle)
         {
-            StartCoroutine(UnloadRoutine(sceneBundle));
+            if (sceneBundle != null)
+            {
+                StartCoroutine(UnloadRoutine(sceneBundle));
+            } 
         }
 
         /// <summary>
@@ -81,9 +92,12 @@ namespace Harmony
         /// </summary>
         /// <param name="oldSceneBundle">Scene Bundle to unload.</param>
         /// <param name="newSceneBundle">Scene Bundle to load.</param>
-        public void Switch(SceneBundle oldSceneBundle, SceneBundle newSceneBundle)
+        public void Switch(SceneBundle newSceneBundle)
         {
-            StartCoroutine(SwitchRoutine(oldSceneBundle, oldSceneBundle));
+            if (newSceneBundle != null)
+            {
+                StartCoroutine(SwitchRoutine(GetCurrentlyLoadedScenes(), newSceneBundle));
+            }
         }
 
         /// <summary>
@@ -97,13 +111,28 @@ namespace Harmony
         /// <param name="sceneBundle">Scene Bundle</param>
         public void Reload(SceneBundle sceneBundle)
         {
-            Switch(sceneBundle, sceneBundle);
+            //Switch(sceneBundle);
+        }
+
+        private SceneBundle GetCurrentlyLoadedScenes()
+        {
+            int countLoaded = SceneManager.sceneCount;
+            SceneBundle sceneBundle = ScriptableObject.CreateInstance<SceneBundle>();
+            sceneBundle.name = "LoadedScenes";
+
+            for (int i = 0; i < countLoaded; i++)
+            {
+                SceneReference sceneReference = new SceneReference();
+                sceneReference.Name = SceneManager.GetSceneAt(i).name;
+                sceneBundle.Scenes.Add(sceneReference);
+            }
+
+            return sceneBundle;         
         }
 
         private IEnumerator LoadRoutine(SceneBundle sceneBundle)
         {
             NotifyLoadStart(sceneBundle);
-
             foreach (var scene in sceneBundle.Scenes)
             {
                 var sceneToLoad = SceneManager.GetSceneByName(scene.Name);
@@ -117,29 +146,42 @@ namespace Harmony
                 if (sceneToMakeActive.isLoaded)
                     SceneManager.SetActiveScene(sceneToMakeActive);
             }
-
             NotifyLoadEnd(sceneBundle);
         }
 
         private IEnumerator UnloadRoutine(SceneBundle sceneBundle)
         {
             NotifyUnloadStart(sceneBundle);
-
             foreach (var scene in sceneBundle.Scenes)
             {
                 var sceneToUnload = SceneManager.GetSceneByName(scene.Name);
-                if (sceneToUnload.isLoaded)
+                if (sceneToUnload.isLoaded && sceneToUnload.name != R.S.Scene.Main)
                     yield return SceneManager.UnloadSceneAsync(scene.Name);
             }
-
             NotifyUnloadEnd(sceneBundle);
         }
 
         private IEnumerator SwitchRoutine(SceneBundle oldSceneBundle, SceneBundle newSceneBundle)
         {
-            yield return UnloadRoutine(oldSceneBundle);
+            NotifySwitchingStart(oldSceneBundle, newSceneBundle);
+            foreach (var scene in oldSceneBundle.Scenes)
+            {
+                var sceneToUnload = SceneManager.GetSceneByName(scene.Name);
+                bool sceneMustUnload = true;
+                foreach (var i in newSceneBundle.Scenes)
+                {
+                    if (i.Name.ToUpper() == sceneToUnload.name.ToUpper())
+                    {
+                        sceneMustUnload = false;
+                        break;
+                    }
+                }
+                if (sceneToUnload.isLoaded && sceneToUnload.name != R.S.Scene.Main && sceneMustUnload)
+                    yield return SceneManager.UnloadSceneAsync(scene.Name);
+            }
 
             yield return LoadRoutine(newSceneBundle);
+            NotifySwitchingEnd(oldSceneBundle, newSceneBundle);
         }
 
         private void NotifyLoadStart(SceneBundle sceneBundle)
@@ -168,6 +210,15 @@ namespace Harmony
             isUnloadingWorld = false;
 
             if (OnUnloadingEnded != null) OnUnloadingEnded(sceneBundle);
+        }
+
+        private void NotifySwitchingStart(SceneBundle oldSceneBundle, SceneBundle newSceneBundle)
+        {
+            if (OnSwitchingStarted != null) OnSwitchingStarted(oldSceneBundle, newSceneBundle);
+        }
+        private void NotifySwitchingEnd(SceneBundle oldSceneBundle, SceneBundle newSceneBundle)
+        {
+            if (OnSwitchingEnded != null) OnSwitchingEnded(oldSceneBundle, newSceneBundle);
         }
     }
 }
