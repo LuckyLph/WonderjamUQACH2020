@@ -21,7 +21,17 @@ namespace Harmony
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name => sceneName;
+        public string Name
+        {
+            get => sceneName;
+            set => sceneName = value;
+        }
+
+        public Object Scene
+        {
+            get => sceneAsset;
+            set => sceneAsset = value;
+        }
 
         public static implicit operator string(SceneReference sceneField)
         {
