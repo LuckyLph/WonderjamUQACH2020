@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     public int bulletDamage;
     public float bulletTime, bulletSpeed;
     // Start is called before the first frame update
@@ -23,12 +22,17 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.takeDamage(this.bulletDamage);
+            enemy.TakeDamage(this.bulletDamage);
             Destroy(this.gameObject);
-        } else if(other.gameObject.tag == "Target")
+        }
+        else if(other.gameObject.tag == "Target")
         {
             targetBehaviour target = other.gameObject.GetComponent<targetBehaviour>();
             target.TakeDamage(this.bulletDamage);
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag != "Player")
+        {
             Destroy(this.gameObject);
         }
     }

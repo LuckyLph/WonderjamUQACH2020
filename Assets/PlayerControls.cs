@@ -133,7 +133,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""1739a959-7b26-4bad-aef2-93e317f1ca60"",
                     ""path"": ""<Mouse>/press"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
