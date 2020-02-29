@@ -13,8 +13,13 @@ public class puzzlePlateBehavior : MonoBehaviour
     [SerializeField]
     private int currentButtonToPress = 0;
 
+    private AudioManager audioManager;
+
+
     void Awake()
     {
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+
         foreach (Transform child in this.transform) //recupere les enfants (tt les boutons)
         {
             this.buttons.Add(child.gameObject);
@@ -40,6 +45,10 @@ public class puzzlePlateBehavior : MonoBehaviour
         int indexPressed = this.buttons.IndexOf(buttonPressed);
         if(indexPressed != this.currentButtonToPress)
         {
+            if(this.currentButtonToPress != 0)
+            {
+                this.audioManager.PlaySound("puzzle_bad");
+            }
             this.currentButtonToPress = 0;
             foreach (GameObject button in this.buttons)
             {
@@ -48,6 +57,8 @@ public class puzzlePlateBehavior : MonoBehaviour
         } else if(indexPressed == this.buttons.Count - 1)
         {
             this.puzzleSolved = true;
+            this.audioManager.PlaySound("puzzle_solved");
+
             foreach (GameObject button in this.buttons)
             {
                 button.GetComponent<PlateBehavior>().solved(); //deactivate permanently the plates

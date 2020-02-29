@@ -9,6 +9,7 @@ TagManager:
   - Jewel
   - JewelPlace
   - Enemy
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - AI_Attack
+  - AI
+  - Player
   - 
   - 
   - 

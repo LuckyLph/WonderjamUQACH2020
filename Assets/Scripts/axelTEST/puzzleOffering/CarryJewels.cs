@@ -17,6 +17,12 @@ public class CarryJewels : MonoBehaviour
     [SerializeField]
     private bool m_isPlaced = false;
 
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+    }
 
     public bool isPlaced
     {
@@ -67,6 +73,7 @@ public class CarryJewels : MonoBehaviour
             {
                 this.player = collision.gameObject;
                 this.player.GetComponent<IsCarrying>().isCarryingJewel = true;
+                this.audioManager.PlaySound("pick_jewel");
                 this.isFollowing = true;
             }
         }
@@ -84,6 +91,7 @@ public class CarryJewels : MonoBehaviour
 
     public void placed()
     {
+        this.audioManager.PlaySound("place_jewel");
         Destroy(this.gameObject.GetComponent<CircleCollider2D>());
         this.isPlaced = true;
         this.isFollowing = false;

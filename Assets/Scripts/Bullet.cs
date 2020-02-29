@@ -28,6 +28,11 @@ public class Bullet : MonoBehaviour
         else if (other.gameObject.tag != "Player")
         {
             Destroy(this.gameObject);
+        } else if(other.gameObject.tag == "Target")
+        {
+            targetBehaviour target = other.gameObject.GetComponent<targetBehaviour>();
+            target.TakeDamage(this.bulletDamage);
+            Destroy(this.gameObject);
         }
     }
 }
