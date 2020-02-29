@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     PlayerControls controls;
-    public float speedP, speedB;
+    public float speed;
     private Transform firePoint;
     public GameObject bulletPrefab;
     private Rigidbody2D rb;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     }
 
     void Movement(){
-        Vector2 m = new Vector2(move.x, move.y) * Time.deltaTime * speedP;
+        Vector2 m = new Vector2(move.x, move.y) * Time.deltaTime * speed;
         transform.Translate(m, Space.World);
     }
 
@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
     }
 
     void Shoot(){
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = firePoint.up * speedB;
+        GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bulletInstance.GetComponent<Rigidbody2D>().velocity = firePoint.up * bulletInstance.GetComponent<Bullet>().bulletSpeed;
     }
 
 

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    public int bulletDamage;
+    public float bulletTime, bulletSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, bulletTime);
     }
 
     // Update is called once per frame
@@ -17,10 +20,11 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.name=="Hexagon")
+        if(other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.takeDamage(this.bulletDamage);
+            Destroy(this.gameObject);
         }
-}
+    }
 }
