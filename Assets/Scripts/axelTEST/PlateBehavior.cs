@@ -43,6 +43,12 @@ public class PlateBehavior : MonoBehaviour
         this.render.color = Color.red;
     }
 
+    public void solved()
+    {
+        this.render.color = Color.green;
+        Destroy(this.gameObject.GetComponent<CircleCollider2D>());
+    }
+
     private void tellParent()
     {
         puzzle.buttonActivated(this.gameObject);

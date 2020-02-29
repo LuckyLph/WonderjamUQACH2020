@@ -48,6 +48,10 @@ public class puzzlePlateBehavior : MonoBehaviour
         } else if(indexPressed == this.buttons.Count - 1)
         {
             this.puzzleSolved = true;
+            foreach (GameObject button in this.buttons)
+            {
+                button.GetComponent<PlateBehavior>().solved(); //deactivate permanently the plates
+            }
         } else
         {
             this.currentButtonToPress++;
