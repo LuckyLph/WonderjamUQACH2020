@@ -49,34 +49,40 @@ MonoBehaviour:
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0.02
     source: {fileID: 0}
   - name: puzzle_solved
     audioClip: {fileID: 8300000, guid: e14067668b4f98f44a0f48656e8ed50d, type: 3}
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0
     source: {fileID: 0}
   - name: puzzle_bad
     audioClip: {fileID: 8300000, guid: ae352bc7683c31044b05f21dd915bbbc, type: 3}
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0
     source: {fileID: 0}
   - name: pick_jewel
     audioClip: {fileID: 8300000, guid: 25dc5d00ff324d54e8e7956f1fce23ae, type: 3}
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0.031
     source: {fileID: 0}
   - name: place_jewel
     audioClip: {fileID: 8300000, guid: c06527317c108494380a6ab82b18872c, type: 3}
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0
     source: {fileID: 0}
   - name: hit_target
     audioClip: {fileID: 8300000, guid: 46280d86e1bbc264eb382a0a6a755d06, type: 3}
     shouldLoop: 0
     volume: 1
     pitch: 1
+    timeToStart: 0.065
     source: {fileID: 0}
