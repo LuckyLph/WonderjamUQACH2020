@@ -25,13 +25,14 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(this.bulletDamage);
             Destroy(this.gameObject);
         }
-        else if (other.gameObject.tag != "Player")
-        {
-            Destroy(this.gameObject);
-        } else if(other.gameObject.tag == "Target")
+        else if(other.gameObject.tag == "Target")
         {
             targetBehaviour target = other.gameObject.GetComponent<targetBehaviour>();
             target.TakeDamage(this.bulletDamage);
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag != "Player")
+        {
             Destroy(this.gameObject);
         }
     }
