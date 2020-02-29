@@ -996,5 +996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OfferingPuzzle_example
       objectReference: {fileID: 0}
+    - target: {fileID: 2825518057464328825, guid: b25c51066556fb242b7eb721011eda79,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.97
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b25c51066556fb242b7eb721011eda79, type: 3}
