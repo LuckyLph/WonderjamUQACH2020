@@ -20,12 +20,16 @@ public class OfferingPuzzleBehavior : MonoBehaviour
     [SerializeField]
     public List<GameObject> jewels = new List<GameObject>();
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         this.CreatePureColors();
         this.GenerateRandomPureColors();
         this.SpawnZone = this.transform.GetChild(0).gameObject;
         this.PlacementZone = this.transform.GetChild(1).gameObject;
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+
     }
 
     void Start()
@@ -98,5 +102,6 @@ public class OfferingPuzzleBehavior : MonoBehaviour
             }
         }
         this.puzzleSolved = true;
+        this.audioManager.PlaySound("puzzle_solved");
     }
 }
