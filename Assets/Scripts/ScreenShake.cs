@@ -11,8 +11,8 @@ public class ScreenShake : MonoBehaviour
 
     public float shakeDurationBase, shakeMagnitude, dampingSpeed;
 
-    [Range(0.01f,1f)]
-    public float secondBetweenShakes = 1f;
+    [Range(0.001f,0.2f)]
+    public float secondBetweenShakes = 0.001f;
 
     private bool isShaking = false;
     
