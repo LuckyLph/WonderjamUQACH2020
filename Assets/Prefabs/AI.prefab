@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 5990592444714296516}
   - component: {fileID: 5990592444714296517}
   - component: {fileID: 5990592444714296520}
-  - component: {fileID: 5990592444714296522}
   - component: {fileID: 5990592444714296519}
+  - component: {fileID: 5990592444714296522}
+  - component: {fileID: 5641440364918794276}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -141,6 +142,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &5990592444714296519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990592444714296526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b95891e76f7afe4aa54975a06ed6548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
 --- !u!50 &5990592444714296522
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +176,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5990592444714296519
+--- !u!114 &5641440364918794276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,10 +185,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5990592444714296526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b95891e76f7afe4aa54975a06ed6548, type: 3}
+  m_Script: {fileID: 11500000, guid: d6902203b2b87b946b265c010b358982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
+  health: 3
 --- !u!1 &5990592445254187381
 GameObject:
   m_ObjectHideFlags: 0

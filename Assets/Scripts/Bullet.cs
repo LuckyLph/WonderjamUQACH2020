@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private ScreenShake shake;
     public int bulletDamage;
     public float bulletTime, bulletSpeed;
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, bulletTime);
-        shake = GameObject.Find("Main Camera").GetComponent<ScreenShake>();
     }
 
     // Update is called once per frame
@@ -26,7 +24,10 @@ public class Bullet : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(this.bulletDamage);
             Destroy(this.gameObject);
-            shake.TriggerShake();
+        }
+        else if (other.gameObject.tag != "Player")
+        {
+            Destroy(this.gameObject);
         }
     }
 }
