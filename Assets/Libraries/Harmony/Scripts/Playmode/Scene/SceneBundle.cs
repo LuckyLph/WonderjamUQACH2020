@@ -17,7 +17,11 @@ namespace Harmony
         /// <summary>
         /// Scenes. First scene in this list is the active scene.
         /// </summary>
-        public IReadOnlyList<SceneReference> Scenes => scenes;
+        public List<SceneReference> Scenes
+        {
+            get => scenes;
+            set => scenes = value;
+        }
 
         /// <summary>
         /// When loading this bundle, should the first scene be marked as active ?
