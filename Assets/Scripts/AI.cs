@@ -32,6 +32,7 @@ public class AI : MonoBehaviour
   {
     if (timerBeforeAttackingAgain <= 0.0f)
     {
+      gameObject.GetComponentInChildren<Animator>().SetBool("IsAttacking", true);
       timerBeforeAttackingAgain = baseTimer;
       GameObject a = Instantiate(attack, transform) as GameObject;
       a.transform.position = transform.position;
