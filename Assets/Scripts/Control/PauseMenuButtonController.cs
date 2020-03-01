@@ -19,10 +19,12 @@ public class PauseMenuButtonController : MonoBehaviour
     public void Restart()
     {
         Finder.SceneBundleLoader.Reload(Finder.SceneBundlesReference.GetSceneBundleByName("Game"));
+        AudioManager.instance.StopSound("GameTheme");
     }
 
     public void QuitGame()
     {
         Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("MainMenu"));
+        AudioManager.instance.StopSound("GameTheme");
     }
 }
