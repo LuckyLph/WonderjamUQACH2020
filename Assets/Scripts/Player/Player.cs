@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     Weapon weapon;
     public int index = 0;
-    private string[] weapons = {"Handgun", "Rifle"};
-    public Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
+    public List<Weapon> weapons = new List<Weapon>();
+    //public Weapon[] varWeapon = {new Weapon("Handgun", 230, 2, 2, 20, 1, 100), new Weapon("Rifle", 1000, 5, 1, 20, 1, 1000), new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200)};
     private string currentWeapon;
     PlayerControls controls;
     private ScreenShake shake;
@@ -49,7 +49,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentWeapon = weapons[index];
+        weapons.Add(new Weapon("Handgun", 230, 2, 2, 20, 1, 100));
+        currentWeapon = weapons[index].weaponName;
         rb = GetComponent<Rigidbody2D>();
         firePoint = transform.GetChild(0).transform;
         shake = GameObject.Find("Main Camera").GetComponent<ScreenShake>();
@@ -147,20 +148,32 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        else if(varWeapon[index].ammunition == 0)
+        else if(weapons[index].ammunition == 0)
         {
             this.audioManager.StopSound("no_ammo"); //inutile?
             this.audioManager.PlaySound("no_ammo");
-            DelayUntilNextShot = 60 / varWeapon[index].roundPerMin;
+            DelayUntilNextShot = 60 / weapons[index].roundPerMin;
         }else{
             //animator.Play("Handgun_Shoot");
             this.playRandomUziSound();
             shake.TriggerShake();
-            DelayUntilNextShot = 60/varWeapon[index].roundPerMin;
-            varWeapon[index].ammunition--;
-            spread = new Vector3(0, 0, Random.Range(-varWeapon[index].spreadRange, varWeapon[index].spreadRange));
-            GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
-            bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * varWeapon[index].bulletSpeed;
+            DelayUntilNextShot = 60/weapons[index].roundPerMin;
+            weapons[index].ammunition--;
+            if (currentWeapon == "Shotgun")
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    spread = new Vector3(0, 0, Random.Range(-weapons[index].spreadRange, weapons[index].spreadRange));
+                    GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
+                    bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * weapons[index].bulletSpeed;
+                }
+            }
+            else
+            {
+                spread = new Vector3(0, 0, Random.Range(-weapons[index].spreadRange, weapons[index].spreadRange));
+                GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
+                bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * weapons[index].bulletSpeed;
+            }
         }
     }
 
@@ -189,22 +202,21 @@ public class Player : MonoBehaviour
     }
 
     void ChooseWeapon(bool up){
-        currentWeapon = weapons[index];
         if (up)
         {
             index++;
-            if (index == weapons.Length)
+            if (index == weapons.Count)
             {
                 index = 0;
             }
         }else{
             if (index == 0)
             {
-                index = weapons.Length;
+                index = weapons.Count;
             }
             index--;
         }
-        currentWeapon = weapons[index];
+        currentWeapon = weapons[index].weaponName;
         Debug.Log(currentWeapon);
     }
 
@@ -213,6 +225,22 @@ public class Player : MonoBehaviour
         if (this.health <= 0)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.name == "Shotgun")
+        {
+            weapons.Add(new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200));
+            Destroy(other.gameObject);
+            rb.velocity = Vector2.zero;
+        }
+        else if(other.gameObject.name == "Rifle")
+        {
+            weapons.Add(new Weapon("Rifle", 1000, 5, 1, 20, 1, 1000));
+            Destroy(other.gameObject);
+        }else{
+            return;
         }
     }
 
