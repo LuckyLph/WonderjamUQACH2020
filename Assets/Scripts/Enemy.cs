@@ -6,15 +6,17 @@ public class Enemy : MonoBehaviour
   public GameObject dropMunition;
   public GameObject dropVie;
   private GameManager gameManager;
+  private AudioManager audioManager;
 
-  // Update is called once per frame
-  void Awake()
+  private void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
+    audioManager = FindObjectOfType<AudioManager>();
   }
 
   public void TakeDamage(int damage)
   {
+    audioManager.PlaySound("zombie_hit");
     health -= damage;
     if (health <= 0)
     {

@@ -4,21 +4,31 @@ using UnityEngine;
 //using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
-    private ScreenShake shake;
     PlayerControls controls;
-    public float speed, spreadRange;
+    private ScreenShake shake;
     private Transform firePoint;
-    public GameObject bulletPrefab;
     private Rigidbody2D rb;
-    Vector2 move, aimJ, aimM;
-    public int health, ammunition;
+    private Vector2 move, aimJ, aimM;
     private bool MouseUse, isShooting;
+    private float DelayUntilNextShot = 0;
     private Vector3 spread;
+    
     [Range(1,10000)]
     public float roundPerMin;
-    private float DelayUntilNextShot = 0;
+    public int health, ammunition;
+    public GameObject bulletPrefab;
+    public float speed, spreadRange;
+    public Animator animator;
+    [Range(0.1f,1f)]
+    public float secBetweenSteps = 0.5f;
+    private float secRemainingStep = 0f;
+
+    private AudioManager audioManager;
 
     void Awake(){
+
+        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+
         controls = new PlayerControls();
 
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
@@ -59,6 +69,35 @@ public class Player : MonoBehaviour
 
     void Movement(){
         rb.velocity = new Vector2(move.x, move.y) * speed;
+        if(this.secRemainingStep <= 0 && rb.velocity != Vector2.zero)
+        {
+            this.TakeAStep();
+            this.secRemainingStep = this.secBetweenSteps;
+        } else
+        {
+            this.secRemainingStep -= Time.deltaTime;
+        }
+    }
+
+    private void TakeAStep()
+    {
+        switch (Random.Range(0,3))
+        {
+            case 0:
+                this.audioManager.PlaySound("player_step1");
+                break;
+            case 1:
+                this.audioManager.PlaySound("player_step2");
+                break;
+            case 2:
+                this.audioManager.PlaySound("player_step3");
+                break;
+            case 3:
+                this.audioManager.PlaySound("player_step4");
+                break;
+            default:
+                break;
+        }
     }
 
     void Aim(){
@@ -83,18 +122,47 @@ public class Player : MonoBehaviour
     }
 
     void Shoot(){
-        if (ammunition == 0)
+        if (DelayUntilNextShot >= 0)
         {
-            //play sound dont shoot me im am a good boy
-        }else if(DelayUntilNextShot >= 0){
             return;
+        }
+        else if(ammunition == 0)
+        {
+            this.audioManager.StopSound("no_ammo"); //inutile?
+            this.audioManager.PlaySound("no_ammo");
+            DelayUntilNextShot = 60 / roundPerMin;
         }else{
+            this.playRandomUziSound();
             shake.TriggerShake();
             DelayUntilNextShot = 60/roundPerMin;
             ammunition--;
             spread = new Vector3(0, 0, Random.Range(-spreadRange, spreadRange));
             GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
             bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * bulletInstance.GetComponent<Bullet>().bulletSpeed;
+        }
+    }
+
+    private void playRandomUziSound()
+    {
+        switch (Random.Range(0,4))
+        {
+            case 0:
+                this.audioManager.PlaySound("fire_uzi1");
+                break;
+            case 1:
+                this.audioManager.PlaySound("fire_uzi2");
+                break;
+            case 2:
+                this.audioManager.PlaySound("fire_uzi3");
+                break;
+            case 3:
+                this.audioManager.PlaySound("fire_uzi4");
+                break;
+            case 4:
+                this.audioManager.PlaySound("fire_uzi5");
+                break;
+            default:
+                break;
         }
     }
 

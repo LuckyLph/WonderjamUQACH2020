@@ -43,6 +43,7 @@ public class targetBehaviour : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+
         if (this.puzzleSolved)
         {
             return;
