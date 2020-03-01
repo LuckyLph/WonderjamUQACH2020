@@ -177,3 +177,17 @@ MonoBehaviour:
     pitch: 1
     timeToStart: 0
     source: {fileID: 0}
+  - name: MenuTheme
+    audioClip: {fileID: 8300000, guid: a1a3611811f1d91419cc93584174c423, type: 3}
+    shouldLoop: 1
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
+  - name: GameTheme
+    audioClip: {fileID: 8300000, guid: 45216351122d392489c3a972b5f81f83, type: 3}
+    shouldLoop: 1
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}

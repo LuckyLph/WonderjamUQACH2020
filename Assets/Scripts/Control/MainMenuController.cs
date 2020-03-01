@@ -9,6 +9,11 @@ public class MainMenuController : MonoBehaviour
 {
     private GameObject currentlySelected;
 
+    private void Start()
+    {
+       AudioManager.instance.PlaySound("MenuTheme");
+    }
+
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject != null)
