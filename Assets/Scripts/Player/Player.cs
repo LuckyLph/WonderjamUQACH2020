@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     Weapon weapon;
     public int index = 0;
-    private string[] weapons = {"Handgun", "Rifle"};
-    public Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
+    private string[] weapons = {"Shotgun", "Handgun", "Rifle"};
+    public Weapon[] varWeapon = {new Weapon(60, 30, 3, 20, 0.2f, 200), new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
     private string currentWeapon;
     PlayerControls controls;
     private ScreenShake shake;
@@ -158,9 +158,21 @@ public class Player : MonoBehaviour
             shake.TriggerShake();
             DelayUntilNextShot = 60/varWeapon[index].roundPerMin;
             varWeapon[index].ammunition--;
-            spread = new Vector3(0, 0, Random.Range(-varWeapon[index].spreadRange, varWeapon[index].spreadRange));
-            GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
-            bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * varWeapon[index].bulletSpeed;
+            if (currentWeapon == "Shotgun")
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    spread = new Vector3(0, 0, Random.Range(-varWeapon[index].spreadRange, varWeapon[index].spreadRange));
+                    GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
+                    bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * varWeapon[index].bulletSpeed;
+                }
+            }
+            else
+            {
+                spread = new Vector3(0, 0, Random.Range(-varWeapon[index].spreadRange, varWeapon[index].spreadRange));
+                GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
+                bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * varWeapon[index].bulletSpeed;
+            }
         }
     }
 
