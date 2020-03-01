@@ -7,6 +7,9 @@ public class PlateBehavior : MonoBehaviour
     [SerializeField]
     private bool isActive;
 
+    public Sprite button_up;
+    public Sprite button_down;
+
     private SpriteRenderer render;
     private puzzlePlateBehavior puzzle;
 
@@ -17,6 +20,7 @@ public class PlateBehavior : MonoBehaviour
         this.render = this.gameObject.GetComponent<SpriteRenderer>();
         this.puzzle = this.GetComponentInParent<puzzlePlateBehavior>();
         this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+        this.render.sprite = this.button_up;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,23 +33,21 @@ public class PlateBehavior : MonoBehaviour
 
 
 
-
-
-
-
     public void activate()
     {
+        this.render.sprite = this.button_down;
         this.isActive = true;
-        this.render.color = Color.blue;
+        //this.render.color = Color.blue;
         this.audioManager.PlaySound("plate_activated");
         this.tellParent();
     }
 
     public void deactivate()
     {
+        this.render.sprite = this.button_up;
         this.isActive = false;
         this.audioManager.PlaySound("plate_activated");
-        this.render.color = Color.red;
+        //this.render.color = Color.red;
     }
 
     public void solved()

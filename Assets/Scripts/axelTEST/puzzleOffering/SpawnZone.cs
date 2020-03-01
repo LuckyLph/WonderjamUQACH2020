@@ -8,6 +8,8 @@ public class SpawnZone : MonoBehaviour
     public GameObject prefabtoSpawn;
     public bool ranfomizePrefabSpriteColor = true;
 
+    public Sprite spriteToUse;
+
     [SerializeField]
     private List<Vector2> positions = new List<Vector2>();
 
@@ -45,6 +47,10 @@ public class SpawnZone : MonoBehaviour
         {
             GameObject spawned = Instantiate(this.prefabtoSpawn, this.positions[i], Quaternion.identity);
             spawned.GetComponent<SpriteRenderer>().color = colors[i];
+            if (this.spriteToUse)
+            {
+                spawned.GetComponent<SpriteRenderer>().sprite = this.spriteToUse;
+            }
             if (spawned.tag == "Jewel")
             {
                 spawned.GetComponent<CarryJewels>().myColor = colors[i];
