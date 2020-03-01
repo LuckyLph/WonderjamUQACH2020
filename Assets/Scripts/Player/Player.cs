@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private GameManager gm;
     private bool frenzyOn;
     private Weapon gatling;
+    private bool hasGatling = false;
 
     void Awake(){
 
@@ -53,8 +54,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gatling = new Weapon("Gatling", 5000, 5, 5, 20, 1, 100000);
-
+        this.gatling = new Weapon("Flashlight", 5000, 5, 5, 20, 1, 100000);
         weapons.Add(new Weapon("Handgun", 230, 2, 2, 20, 1, 100));
         currentWeapon = weapons[index].weaponName;
         rb = GetComponent<Rigidbody2D>();
@@ -90,16 +90,18 @@ public class Player : MonoBehaviour
         this.gm.Frenzy = this.frenzy;
         this.frenzyOn = this.gm.FrenzyOn;
 
-        if (this.frenzyOn)
+        if (this.gm.FrenzyOn && !hasGatling)
         {
+            hasGatling = true;
             this.frenzy = 0;
             this.weapons.Add(this.gatling);
-        } else if(this.weapons.Contains(this.gatling))
+        } else if(this.weapons.Contains(this.gatling) && !this.gm.FrenzyOn)
         {
             this.weapons.Remove(this.gatling);
+            hasGatling = false;
         }
 
-        Debug.Log(this.weapons[1]);
+        //Debug.Log(this.weapons[index].weaponName);
 
     }
 
@@ -240,6 +242,7 @@ public class Player : MonoBehaviour
             }
             index--;
         }
+        Debug.Log(index);
         currentWeapon = weapons[index].weaponName;
         Debug.Log(currentWeapon);
     }
