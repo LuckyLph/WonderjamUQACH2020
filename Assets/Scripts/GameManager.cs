@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    //AudioManager.instance
+        AudioManager.instance.PlaySound("GameTheme");
   }
 
   private void Awake()
