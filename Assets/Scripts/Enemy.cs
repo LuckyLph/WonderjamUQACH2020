@@ -19,15 +19,13 @@ public class Enemy : MonoBehaviour
   {
     AudioManager.instance.PlaySound("zombie_hit");
     health -= damage;
-    Debug.Log(health);
     if (health <= 0)
     {
-      gameManager.Score += score;
+      //gameManager.Score += score;
       //DropMunition();
       //DropVie();
       //DropFrenzy();
       hasTakenDamage = true;
-      Debug.Log("not cool" + health);
       Destroy(gameObject);
     }
   }
