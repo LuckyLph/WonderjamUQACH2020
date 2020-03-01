@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Weapon weapon;
-    private int index = 0;
+    public int index = 0;
     private string[] weapons = {"Handgun", "Rifle"};
-    private Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
+    public Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
     private string currentWeapon;
     PlayerControls controls;
     private ScreenShake shake;
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentWeapon = weapons[index];
         rb = GetComponent<Rigidbody2D>();
         firePoint = transform.GetChild(0).transform;
         shake = GameObject.Find("Main Camera").GetComponent<ScreenShake>();

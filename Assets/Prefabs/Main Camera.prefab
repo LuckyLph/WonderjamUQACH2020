@@ -99,3 +99,4 @@ MonoBehaviour:
   shakeDurationBase: 0.1
   shakeMagnitude: 0.2
   dampingSpeed: 1
+  secondBetweenShakes: 0.001
