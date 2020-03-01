@@ -10,6 +10,9 @@ TagManager:
   - JewelPlace
   - Enemy
   - Target
+  - lifeDrop
+  - ammoDrop
+  - frenzyDrop
   layers:
   - Default
   - TransparentFX

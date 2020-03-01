@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2827438576997282235}
   - component: {fileID: 2827438576997282232}
   - component: {fileID: 2827438576997282233}
+  - component: {fileID: 462461906919914}
   m_Layer: 0
   m_Name: DropVie
-  m_TagString: Untagged
+  m_TagString: lifeDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: -2451013654427263197, guid: 0a651b2c73d73164083453f9b14b1d06,
     type: 3}
   m_Color: {r: 0.8962264, g: 0.09711754, b: 0.07186722, a: 1}
@@ -109,3 +110,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &462461906919914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827438576997282230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa365dac22eb62742b3494197dff1c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
