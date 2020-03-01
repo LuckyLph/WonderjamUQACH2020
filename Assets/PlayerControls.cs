@@ -49,6 +49,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChooseWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""6224e820-dd4f-488d-bb3d-6a328491e18d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -159,6 +167,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim_Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7f92a93-cc5a-4e06-8132-6004c80fd21f"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -471,6 +490,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Aim_Mouse = m_Gameplay.FindAction("Aim_Mouse", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Aim_Joystick = m_Gameplay.FindAction("Aim_Joystick", throwIfNotFound: true);
+        m_Gameplay_ChooseWeapon = m_Gameplay.FindAction("ChooseWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
@@ -532,6 +552,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Aim_Mouse;
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Aim_Joystick;
+    private readonly InputAction m_Gameplay_ChooseWeapon;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -540,6 +561,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Aim_Mouse => m_Wrapper.m_Gameplay_Aim_Mouse;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @Aim_Joystick => m_Wrapper.m_Gameplay_Aim_Joystick;
+        public InputAction @ChooseWeapon => m_Wrapper.m_Gameplay_ChooseWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -561,6 +583,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim_Joystick.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim_Joystick;
                 @Aim_Joystick.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim_Joystick;
                 @Aim_Joystick.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim_Joystick;
+                @ChooseWeapon.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChooseWeapon;
+                @ChooseWeapon.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChooseWeapon;
+                @ChooseWeapon.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnChooseWeapon;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -577,6 +602,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim_Joystick.started += instance.OnAim_Joystick;
                 @Aim_Joystick.performed += instance.OnAim_Joystick;
                 @Aim_Joystick.canceled += instance.OnAim_Joystick;
+                @ChooseWeapon.started += instance.OnChooseWeapon;
+                @ChooseWeapon.performed += instance.OnChooseWeapon;
+                @ChooseWeapon.canceled += instance.OnChooseWeapon;
             }
         }
     }
@@ -660,6 +688,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnAim_Mouse(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnAim_Joystick(InputAction.CallbackContext context);
+        void OnChooseWeapon(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
