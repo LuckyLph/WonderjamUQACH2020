@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    //AudioManager.instance
+        AudioManager.instance.PlaySound("GameTheme");
   }
 
   private void Awake()
@@ -115,8 +115,10 @@ public class GameManager : MonoBehaviour
         smallestDistance = distanceBetweenPlayerAndSpawner;
         spawnerChoisi = ai_spawner;
       }
-      ai_spawner.NumberZombiesFaibles = (int)Mathf.Round(numberZombieFaibleMax * formuleSpawnZombiesFaible);
-      ai_spawner.NumberZombiesForts = (int)Mathf.Round(numberZombieFortMax * formuleSpawnZombiesForts);
+      //ai_spawner.NumberZombiesFaibles = (int)Mathf.Round(numberZombieFaibleMax * formuleSpawnZombiesFaible);
+      //ai_spawner.NumberZombiesForts = (int)Mathf.Round(numberZombieFortMax * formuleSpawnZombiesForts);
+      ai_spawner.NumberZombiesFaibles = 1;
+      ai_spawner.NumberZombiesForts = 1;
       if (FrenzyOn)
       {
         ai_spawner.NumberZombiesFaibles *= 2;
