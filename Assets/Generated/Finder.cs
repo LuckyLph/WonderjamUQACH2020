@@ -1,5 +1,5 @@
 // ----- AUTO GENERATED CODE - ANY MODIFICATION WILL BE OVERRIDEN ----- //
-// ----- GENERATED ON 2020-02-29 15:44:27.673329200 -05:00 ----- //
+// ----- GENERATED ON 2020-03-01 10:47:59.090354200 -05:00 ----- //
 
 /*
  * To add an object to the Finder, add a "Findable" attribute to the class :
@@ -28,18 +28,19 @@ namespace Harmony
 {
     public static class Finder
     {
-        private static Harmony.NavigationMesh findableNavigationMesh = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\NavigationMesh.cs, line 12.
+        private static ManageMenus findableManageMenus = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Scripts\Control\ManageMenus.cs, line 7.
         private static Harmony.SceneBundleLoader findableSceneBundleLoader = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Scene\SceneBundleLoader.cs, line 12.
         private static SceneBundlesReference findableSceneBundlesReference = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Scene\SceneBundlesReference.cs, line 5.
         private static Harmony.PathFinder findablePathFinder = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\PathFinder.cs, line 13.
+        private static Harmony.NavigationMesh findableNavigationMesh = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Navigation\NavigationMesh.cs, line 12.
         private static Harmony.SqLiteConnectionFactory findableSqLiteConnectionFactory = null; //File C:\Users\LP\Documents\WonderJam2020\Assets\Libraries\Harmony\Scripts\Playmode\Database\SqLiteConnectionFactory.cs, line 13.
     
-        public static Harmony.NavigationMesh NavigationMesh
+        public static ManageMenus ManageMenus
         {
             get
             {
-                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>(R.S.Tag.NavigationMesh);
-                return findableNavigationMesh;
+                if (!findableManageMenus) findableManageMenus = FindWithTag<ManageMenus>(R.S.Tag.MainController);
+                return findableManageMenus;
             }
         }
         
@@ -67,6 +68,15 @@ namespace Harmony
             {
                 if (!findablePathFinder) findablePathFinder = FindWithTag<Harmony.PathFinder>(R.S.Tag.NavigationMesh);
                 return findablePathFinder;
+            }
+        }
+        
+        public static Harmony.NavigationMesh NavigationMesh
+        {
+            get
+            {
+                if (!findableNavigationMesh) findableNavigationMesh = FindWithTag<Harmony.NavigationMesh>(R.S.Tag.NavigationMesh);
+                return findableNavigationMesh;
             }
         }
         
