@@ -325,18 +325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieFaible: {fileID: 5990592444714296526, guid: b0fa3c0b17015f9439d2aacb0b3a78ba,
     type: 3}
-  zombieFort: {fileID: 0}
-  transforms:
-  - {fileID: 2799986584061288318}
-  - {fileID: 2799986584289802002}
-  - {fileID: 2799986584026545873}
-  - {fileID: 2799986585016845301}
-  - {fileID: 220446432}
-  - {fileID: 1734321211}
-  - {fileID: 1299123814}
-  - {fileID: 1616241515}
-  - {fileID: 2108465996}
-  - {fileID: 244063068}
+  zombieFort: {fileID: 8499677940352343612, guid: 4d7940a7b57591e45b4b41ec89911e86,
+    type: 3}
 --- !u!1 &2799986585016845300
 GameObject:
   m_ObjectHideFlags: 0

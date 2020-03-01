@@ -4535,6 +4535,11 @@ PrefabInstance:
       propertyPath: coeficientSpawnDropVie
       value: 0.995
       objectReference: {fileID: 0}
+    - target: {fileID: 5228134938622802714, guid: d5843d1f4f5488b458b318faf251581e,
+        type: 3}
+      propertyPath: coeficientSpawnDropFrenzy
+      value: 0.995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5843d1f4f5488b458b318faf251581e, type: 3}
 --- !u!1001 &8857091704351856036

@@ -3,8 +3,10 @@
 public class Enemy : MonoBehaviour
 {
   public int health = 0;
+  public int score = 100;
   public GameObject dropMunition;
   public GameObject dropVie;
+  public GameObject dropFrenzy;
   private GameManager gameManager;
   private AudioManager audioManager;
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     health -= damage;
     if (health <= 0)
     {
+      gameManager.score += score;
       Destroy(gameObject);
       DropMunition();
       DropVie();
@@ -42,6 +45,16 @@ public class Enemy : MonoBehaviour
     if (rand <= gameManager.CoeficientSpawnDropVie)
     {
       GameObject d = Instantiate(dropVie) as GameObject;
+      d.transform.position = transform.position;
+    }
+  }
+
+  private void DropFrenzy()
+  {
+    float rand = Random.value;
+    if (rand <= gameManager.CoeficientSpawnDropVie)
+    {
+      GameObject d = Instantiate(dropFrenzy) as GameObject;
       d.transform.position = transform.position;
     }
   }
