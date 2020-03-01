@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
 
         if (this.gm.FrenzyOn && !hasGatling)
         {
+            Debug.Log("bug");
             hasGatling = true;
             this.frenzy = 0;
             this.weapons.Add(this.gatling);
