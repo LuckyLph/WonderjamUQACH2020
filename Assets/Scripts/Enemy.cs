@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour
     health -= damage;
     if (health <= 0)
     {
-      //gameManager.Score += score;
-      //DropMunition();
-      //DropVie();
-      //DropFrenzy();
+      gameManager.Score += score;
+      DropMunition();
+      DropVie();
+      DropFrenzy();
       hasTakenDamage = true;
       Destroy(gameObject);
     }
@@ -32,12 +32,12 @@ public class Enemy : MonoBehaviour
 
   private void DropMunition()
   {
-    //float rand = Random.value;
-    //if (rand <= gameManager.CoeficientSpawnDropMunition)
-    //{
-    //  GameObject d = Instantiate(dropMunition) as GameObject;
-    //  d.transform.position = transform.position;
-    //}
+    float rand = Random.value;
+    if (rand <= gameManager.CoeficientSpawnDropMunition)
+    {
+      GameObject d = Instantiate(dropMunition) as GameObject;
+      d.transform.position = transform.position;
+    }
   }
 
   void OnDestroy(){
@@ -53,24 +53,24 @@ public class Enemy : MonoBehaviour
 
   private void DropVie()
   {
-    //float rand = Random.value;
-    //if (rand <= gameManager.CoeficientSpawnDropVie)
-    //{
-    //  GameObject d = Instantiate(dropVie) as GameObject;
-    //  d.transform.position = transform.position;
-    //}
+    float rand = Random.value;
+    if (rand <= gameManager.CoeficientSpawnDropVie)
+    {
+      GameObject d = Instantiate(dropVie) as GameObject;
+      d.transform.position = transform.position;
+    }
   }
 
   private void DropFrenzy()
   {
-    //if (!gameManager.FrenzyOn)
-    //{
-    //  float rand = Random.value;
-    //  if (rand <= gameManager.CoeficientSpawnDropVie)
-    //  {
-    //    GameObject d = Instantiate(dropFrenzy) as GameObject;
-    //    d.transform.position = transform.position;
-    //  }
-    //}
+    if (!gameManager.FrenzyOn)
+    {
+      float rand = Random.value;
+      if (rand <= gameManager.CoeficientSpawnDropVie)
+      {
+        GameObject d = Instantiate(dropFrenzy) as GameObject;
+        d.transform.position = transform.position;
+      }
+    }
   }
 }
