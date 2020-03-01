@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         }
         else if (rb.velocity == Vector2.zero)
         {
+            rb.angularVelocity = 0f;
             animator.Play(currentWeapon + "_Idle");
         }
     }
@@ -250,22 +251,6 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
             Harmony.Finder.ManageMenus.NotifyGameOver();
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.name == "Shotgun")
-        {
-            weapons.Add(new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200));
-            Destroy(other.gameObject);
-            rb.velocity = Vector2.zero;
-        }
-        else if(other.gameObject.name == "Rifle")
-        {
-            weapons.Add(new Weapon("Rifle", 1000, 5, 1, 20, 1, 1000));
-            Destroy(other.gameObject);
-        }else{
-            return;
         }
     }
 
