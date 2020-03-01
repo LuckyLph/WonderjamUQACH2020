@@ -15,6 +15,9 @@ public class puzzlePlateBehavior : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public GameObject doorToOpen;
+
+
 
     void Awake()
     {
@@ -57,6 +60,8 @@ public class puzzlePlateBehavior : MonoBehaviour
         } else if(indexPressed == this.buttons.Count - 1)
         {
             this.puzzleSolved = true;
+            this.doorToOpen.GetComponent<door>().isOpen = true;
+
             this.audioManager.PlaySound("puzzle_solved");
 
             foreach (GameObject button in this.buttons)
