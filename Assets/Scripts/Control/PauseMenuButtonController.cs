@@ -23,6 +23,6 @@ public class PauseMenuButtonController : MonoBehaviour
 
     public void QuitGame()
     {
-
+        Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("MainMenu"));
     }
 }

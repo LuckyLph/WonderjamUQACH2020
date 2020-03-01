@@ -9,12 +9,32 @@ public class TogglePauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject menu;
 
+    [SerializeField]
+    private InputAction pauseAction;
+
+    private void OnEnable()
+    {
+        pauseAction.performed += PauseActionPerformed;
+        pauseAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pauseAction.performed -= PauseActionPerformed;
+        pauseAction.Disable();
+    }
+
+    private void PauseActionPerformed(InputAction.CallbackContext obj)
+    {
+        ToggleMenu();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleMenu();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    ToggleMenu();
+        //}
     }
 
     private void ToggleMenu()
@@ -22,6 +42,10 @@ public class TogglePauseMenu : MonoBehaviour
         if (!menu.activeInHierarchy)
         {
             menu.SetActive(true);
+        }
+        else
+        {
+            menu.SetActive(false);
         }
     }
 }
