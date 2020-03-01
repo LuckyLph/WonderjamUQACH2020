@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
         }
         else if (rb.velocity == Vector2.zero)
         {
+            rb.angularVelocity = 0f;
             animator.Play(currentWeapon + "_Idle");
         }
     }
