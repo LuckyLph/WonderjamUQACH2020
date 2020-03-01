@@ -2,6 +2,7 @@
 
 public class Enemy : MonoBehaviour
 {
+  private bool hasTakenDamage = false;
   public int health = 0;
   public int score = 100;
   public GameObject dropMunition;
@@ -23,12 +24,10 @@ public class Enemy : MonoBehaviour
     Debug.Log(health);
     if (health <= 0)
     {
+      hasTakenDamage = true;
       Debug.Log("not cool" + health);
-      //gameManager.score += score;
       Destroy(gameObject);
-      //DropMunition();
-      //DropVie();
-      //DropFrenzy();
+
     }
   }
 
@@ -39,6 +38,17 @@ public class Enemy : MonoBehaviour
     {
       GameObject d = Instantiate(dropMunition) as GameObject;
       d.transform.position = transform.position;
+    }
+  }
+
+  void OnDestroy(){
+    if (hasTakenDamage)
+    {
+      Debug.Log("hasTakenDamage");
+      //gameManager.score += score;
+      //DropMunition();
+      //DropVie();
+      //DropFrenzy();
     }
   }
 
