@@ -11,7 +11,7 @@ public class pickPowerUp : MonoBehaviour
 
     
 
-    private void Awake()
+    private void Start()
     {
         this.gm = GameObject.FindObjectOfType<GameManager>();
         this.pl = GameObject.FindObjectOfType<Player>();
@@ -21,22 +21,22 @@ public class pickPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Trigger");
         if(collision.gameObject.tag == "Player")
         {
             switch (this.tag)
             {
                 case "lifeDrop":
                     this.pl.health++;
-                    Debug.Log(this.tag);
                     break;
                 case "ammoDrop":
-                    //WIP
-                    Debug.Log(this.tag);
-
+                    foreach (var weap in this.pl.weapons)
+                    {
+                        weap.ammunition += 20;
+                    }
                     break;
                 case "frenzyDrop":
-                    Debug.Log(this.tag);
-                    //WIP
+                    this.pl.frenzy+=10;
                     break;
                 case "Shotgun":
                     pl.weapons.Add(new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200));
