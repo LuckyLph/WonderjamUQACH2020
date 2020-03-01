@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
   private GameObject player;
   private Vector3 playerPosition;
 
+  private void Start()
+  {
+    //AudioManager.instance
+  }
+
   private void Awake()
   {
     InvokeRepeating("UpdateFormula", 1f, 1f);
@@ -118,7 +123,10 @@ public class GameManager : MonoBehaviour
         ai_spawner.NumberZombiesForts *= 2;
       }
     }
-    spawnerChoisi.Spawn_Zombies();
+    if (spawnerChoisi)
+    {
+      spawnerChoisi.Spawn_Zombies();
+    }
   }
 
   private void ModeFrenzy()

@@ -15,6 +15,9 @@ public class FrenzyDisplay : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    frenzyDisplay.enabled = gameManager.FrenzyOn;
+    if (gameManager != null)
+    {
+      frenzyDisplay.enabled = gameManager.FrenzyOn;
+    }
   }
 }

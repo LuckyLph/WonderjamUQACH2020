@@ -49,7 +49,11 @@ public class ScreenShake : MonoBehaviour
             transform.localPosition = initialPosition;
         }
         */
-        this.initialPosition = new Vector3(this.player.transform.position.x, this.player.transform.position.y, this.transform.position.z);
+    if (player)
+    {
+      this.initialPosition = new Vector3(this.player.transform.position.x, this.player.transform.position.y, this.transform.position.z);
+    }
+        
         //this.initialPosition = this.transform.position;
 
 
