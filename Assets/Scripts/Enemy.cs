@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
   void OnDestroy(){
     if (hasTakenDamage)
     {
-      Debug.Log("hasTakenDamage");
+      //Debug.Log("hasTakenDamage");
       //gameManager.score += score;
       //DropMunition();
       //DropVie();
