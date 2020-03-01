@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8469222888451779539}
   m_Layer: 9
   m_Name: AIFaible
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6902203b2b87b946b265c010b358982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 3
   score: 100
   dropMunition: {fileID: 4523545030824939225, guid: 337dba0bdc4967e4b86b92478358d410,
     type: 3}
