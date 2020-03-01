@@ -2,6 +2,7 @@
 
 public class Enemy : MonoBehaviour
 {
+  private bool hasTakenDamage = false;
   public int health = 0;
   public int score = 100;
   public GameObject dropMunition;
@@ -20,12 +21,16 @@ public class Enemy : MonoBehaviour
   {
     audioManager.PlaySound("zombie_hit");
     health -= damage;
+    Debug.Log(health);
     if (health <= 0)
     {
-      gameManager.score += score;
-      Destroy(this.gameObject);
+      gameManager.Score += score;
       DropMunition();
       DropVie();
+      DropFrenzy();
+      hasTakenDamage = true;
+      Debug.Log("not cool" + health);
+      Destroy(gameObject);
     }
   }
 
@@ -36,6 +41,17 @@ public class Enemy : MonoBehaviour
     {
       GameObject d = Instantiate(dropMunition) as GameObject;
       d.transform.position = transform.position;
+    }
+  }
+
+  void OnDestroy(){
+    if (hasTakenDamage)
+    {
+      Debug.Log("hasTakenDamage");
+      //gameManager.score += score;
+      //DropMunition();
+      //DropVie();
+      //DropFrenzy();
     }
   }
 
@@ -51,11 +67,14 @@ public class Enemy : MonoBehaviour
 
   private void DropFrenzy()
   {
-    float rand = Random.value;
-    if (rand <= gameManager.CoeficientSpawnDropVie)
+    if (!gameManager.FrenzyOn)
     {
-      GameObject d = Instantiate(dropFrenzy) as GameObject;
-      d.transform.position = transform.position;
+      float rand = Random.value;
+      if (rand <= gameManager.CoeficientSpawnDropVie)
+      {
+        GameObject d = Instantiate(dropFrenzy) as GameObject;
+        d.transform.position = transform.position;
+      }
     }
   }
 }

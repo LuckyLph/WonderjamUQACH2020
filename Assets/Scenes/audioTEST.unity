@@ -175,13 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb79eabf0c71f3044ab59b5c83fbf1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundPerMin: 0
   health: 0
-  ammunition: 0
   bulletPrefab: {fileID: 8583263446930567523, guid: 66a61015c74aa54438d890b48602bb84,
     type: 3}
   speed: 5
-  spreadRange: 0
   animator: {fileID: 0}
   secBetweenSteps: 0.5
 --- !u!50 &207776101
@@ -1455,7 +1452,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2806032746150604015, guid: 388e9d38c8beba9439d35d6b824bdd9c,
         type: 3}
+      propertyPath: doorToOpen.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806032746150604015, guid: 388e9d38c8beba9439d35d6b824bdd9c,
+        type: 3}
       propertyPath: doorToOpen
+      value: 
+      objectReference: {fileID: 473547896}
+    - target: {fileID: 2806032746150604015, guid: 388e9d38c8beba9439d35d6b824bdd9c,
+        type: 3}
+      propertyPath: doorToOpen.Array.data[0]
+      value: 
+      objectReference: {fileID: 205299941}
+    - target: {fileID: 2806032746150604015, guid: 388e9d38c8beba9439d35d6b824bdd9c,
+        type: 3}
+      propertyPath: doorToOpen.Array.data[1]
       value: 
       objectReference: {fileID: 473547896}
     m_RemovedComponents: []

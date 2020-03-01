@@ -50,6 +50,11 @@ MonoBehaviour:
   numberZombieFortMax: 100
   coeficientSpawnZombiesFaibles: 0.005
   coeficientSpawnZombiesForts: 0.0005
+  coeficientSpawnDropMunition: 0.995
+  coeficientSpawnDropVie: 0.995
+  coeficientSpawnDropFrenzy: 0.995
+  maxFrenzyForMode: 100
+  frenzyDuration: 20
 --- !u!1001 &7950434372473965878
 PrefabInstance:
   m_ObjectHideFlags: 0
