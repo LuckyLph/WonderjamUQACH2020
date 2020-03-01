@@ -47,4 +47,6 @@ MonoBehaviour:
   prefabtoSpawn: {fileID: 1997678164219170769, guid: 49bf157646b71e94598aeaec7db99583,
     type: 3}
   ranfomizePrefabSpriteColor: 1
+  spriteToUse: {fileID: -5652376711724704476, guid: 0a651b2c73d73164083453f9b14b1d06,
+    type: 3}
   positions: []

@@ -4,6 +4,11 @@ using UnityEngine;
 //using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
+    Weapon weapon;
+    private int index = 0;
+    private string[] weapons = {"Handgun", "Rifle"};
+    private Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
+    private string currentWeapon;
     PlayerControls controls;
     private ScreenShake shake;
     private Transform firePoint;
@@ -12,12 +17,9 @@ public class Player : MonoBehaviour
     private bool MouseUse, isShooting;
     private float DelayUntilNextShot = 0;
     private Vector3 spread;
-    
-    [Range(1,10000)]
-    public float roundPerMin;
-    public int health, ammunition;
+    public int health;
     public GameObject bulletPrefab;
-    public float speed, spreadRange;
+    public float speed;
     public Animator animator;
     [Range(0.1f,1f)]
     public float secBetweenSteps = 0.5f;
@@ -65,6 +67,16 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
+
+        //Weapon
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            ChooseWeapon(true);
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            ChooseWeapon(false);
+        }
     }
 
     void Movement(){
@@ -76,6 +88,14 @@ public class Player : MonoBehaviour
         } else
         {
             this.secRemainingStep -= Time.deltaTime;
+        }
+        if (rb.velocity != Vector2.zero)
+        {
+            animator.Play(currentWeapon + "_Move");
+        }
+        else if (rb.velocity == Vector2.zero)
+        {
+            animator.Play(currentWeapon + "_Idle");
         }
     }
 
@@ -126,19 +146,20 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        else if(ammunition == 0)
+        else if(varWeapon[index].ammunition == 0)
         {
             this.audioManager.StopSound("no_ammo"); //inutile?
             this.audioManager.PlaySound("no_ammo");
-            DelayUntilNextShot = 60 / roundPerMin;
+            DelayUntilNextShot = 60 / varWeapon[index].roundPerMin;
         }else{
+            //animator.Play("Handgun_Shoot");
             this.playRandomUziSound();
             shake.TriggerShake();
-            DelayUntilNextShot = 60/roundPerMin;
-            ammunition--;
-            spread = new Vector3(0, 0, Random.Range(-spreadRange, spreadRange));
+            DelayUntilNextShot = 60/varWeapon[index].roundPerMin;
+            varWeapon[index].ammunition--;
+            spread = new Vector3(0, 0, Random.Range(-varWeapon[index].spreadRange, varWeapon[index].spreadRange));
             GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation*Quaternion.Euler(spread));
-            bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * bulletInstance.GetComponent<Bullet>().bulletSpeed;
+            bulletInstance.GetComponent<Rigidbody2D>().velocity =   bulletInstance.transform.up * varWeapon[index].bulletSpeed;
         }
     }
 
@@ -164,6 +185,26 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void ChooseWeapon(bool up){
+        currentWeapon = weapons[index];
+        if (up)
+        {
+            index++;
+            if (index == weapons.Length)
+            {
+                index = 0;
+            }
+        }else{
+            if (index == 0)
+            {
+                index = weapons.Length;
+            }
+            index--;
+        }
+        currentWeapon = weapons[index];
+        Debug.Log(currentWeapon);
     }
 
     public void takeDamage(int damage){
