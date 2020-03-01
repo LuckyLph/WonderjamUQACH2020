@@ -38,8 +38,15 @@ public class pickPowerUp : MonoBehaviour
                     Debug.Log(this.tag);
                     //WIP
                     break;
+                case "Shotgun":
+                    pl.weapons.Add(new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200));
+                    break;
+                case "Rifle":
+                    pl.weapons.Add(new Weapon("Rifle", 1000, 5, 1, 20, 1, 1000));
+                    break;
                 default:
                     break;
+
             }
             //playsound
             Destroy(this.gameObject);

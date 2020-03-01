@@ -24,10 +24,6 @@ public class Enemy : MonoBehaviour
     Debug.Log(health);
     if (health <= 0)
     {
-      gameManager.Score += score;
-      DropMunition();
-      DropVie();
-      DropFrenzy();
       hasTakenDamage = true;
       Debug.Log("not cool" + health);
       Destroy(gameObject);
@@ -45,13 +41,13 @@ public class Enemy : MonoBehaviour
   }
 
   void OnDestroy(){
-    if (hasTakenDamage)
+    if (hasTakenDamage && hasTakenDamage)
     {
       Debug.Log("hasTakenDamage");
       //gameManager.score += score;
-      //DropMunition();
-      //DropVie();
-      //DropFrenzy();
+      DropMunition();
+      DropVie();
+      DropFrenzy();
     }
   }
 
