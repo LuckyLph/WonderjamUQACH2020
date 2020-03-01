@@ -92,14 +92,14 @@ public class Player : MonoBehaviour
 
         if (this.frenzyOn)
         {
+            this.frenzy = 0;
             this.weapons.Add(this.gatling);
         } else if(this.weapons.Contains(this.gatling))
         {
             this.weapons.Remove(this.gatling);
         }
 
-
-
+        Debug.Log(this.weapons[1]);
 
     }
 
