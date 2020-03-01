@@ -4,7 +4,7 @@ using UnityEngine;
 //using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
-    public int Ammunition { get { return varWeapon[index].ammunition; } private set { } }
+    public int Ammunition { get { return weapons[index].ammunition; } private set { } }
     Weapon weapon;
     public int index = 0;
     public List<Weapon> weapons = new List<Weapon>();
