@@ -10,7 +10,7 @@ public class AmmoDisplay : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    ammo = GameObject.FindGameObjectWithTag(R.S.Tag.Player).GetComponent<Player>().ammunition;
+    //ammo = GameObject.FindGameObjectWithTag(R.S.Tag.Player).GetComponent<Player>();
   }
 
   // Update is called once per frame
