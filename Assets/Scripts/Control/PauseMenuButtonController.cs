@@ -18,7 +18,8 @@ public class PauseMenuButtonController : MonoBehaviour
 
     public void Restart()
     {
-        Finder.SceneBundleLoader.Reload(Finder.SceneBundlesReference.GetSceneBundleByName("Game"));
+        Finder.SceneBundleLoader.Unload(Finder.SceneBundlesReference.GetSceneBundleByName("Game"));
+        Finder.SceneBundleLoader.Load(Finder.SceneBundlesReference.GetSceneBundleByName("Game"));
     }
 
     public void QuitGame()

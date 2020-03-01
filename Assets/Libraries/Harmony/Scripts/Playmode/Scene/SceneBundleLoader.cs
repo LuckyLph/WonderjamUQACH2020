@@ -111,8 +111,7 @@ namespace Harmony
         /// <param name="sceneBundle">Scene Bundle</param>
         public void Reload(SceneBundle sceneBundle)
         {
-            Unload(sceneBundle);
-            Load(sceneBundle);
+            StartCoroutine(ReloadRoutine(sceneBundle));
         }
 
         private SceneBundle GetCurrentlyLoadedScenes()
@@ -129,6 +128,34 @@ namespace Harmony
             }
 
             return sceneBundle;         
+        }
+
+        private IEnumerator ReloadRoutine(SceneBundle sceneBundle)
+        {
+            NotifyLoadStart(sceneBundle);
+            foreach (var scene in sceneBundle.Scenes)
+            {
+                var sceneToLoad = SceneManager.GetSceneByName(scene.Name);
+                if (!sceneToLoad.isLoaded)
+                    yield return SceneManager.LoadSceneAsync(scene.Name, LoadSceneMode.Additive);
+            }
+
+            if (sceneBundle.SetFirstAsActive && sceneBundle.Scenes.Any())
+            {
+                var sceneToMakeActive = SceneManager.GetSceneByName(sceneBundle.Scenes[0].Name);
+                if (sceneToMakeActive.isLoaded)
+                    SceneManager.SetActiveScene(sceneToMakeActive);
+            }
+            NotifyLoadEnd(sceneBundle);
+
+            NotifyUnloadStart(sceneBundle);
+            foreach (var scene in sceneBundle.Scenes)
+            {
+                var sceneToUnload = SceneManager.GetSceneByName(scene.Name);
+                if (sceneToUnload.isLoaded && sceneToUnload.name != R.S.Scene.Main)
+                    yield return SceneManager.UnloadSceneAsync(scene.Name);
+            }
+            NotifyUnloadEnd(sceneBundle);
         }
 
         private IEnumerator LoadRoutine(SceneBundle sceneBundle)
