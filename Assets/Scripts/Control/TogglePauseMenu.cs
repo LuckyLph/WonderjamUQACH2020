@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Harmony;
 
 public class TogglePauseMenu : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class TogglePauseMenu : MonoBehaviour
 
     private void ToggleMenu()
     {
-        if (!menu.activeInHierarchy)
+        if (!menu.activeInHierarchy && !Finder.ManageMenus.IsGameOverMenuOpen)
         {
             menu.SetActive(true);
         }
