@@ -9,15 +9,13 @@ public class ShootPuzzleBehaviour : MonoBehaviour
 
     [SerializeField]
     private bool puzzleSolved = false;
-
-    private AudioManager audioManager;
+  
 
     public GameObject[] doorToOpen;
 
 
     void Awake()
     {
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
 
         foreach (Transform child in this.transform) //recupere les enfants (tt les boutons)
         {
@@ -45,7 +43,7 @@ public class ShootPuzzleBehaviour : MonoBehaviour
         }
 
         this.puzzleSolved = true;
-        this.audioManager.PlaySound("puzzle_solved");
+        AudioManager.instance.PlaySound("puzzle_solved");
 
         foreach (GameObject target in this.targets)
         {

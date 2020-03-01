@@ -12,8 +12,7 @@ public class puzzlePlateBehavior : MonoBehaviour
 
     [SerializeField]
     private int currentButtonToPress = 0;
-
-    private AudioManager audioManager;
+  
 
     public GameObject[] doorToOpen;
 
@@ -21,7 +20,6 @@ public class puzzlePlateBehavior : MonoBehaviour
 
     void Awake()
     {
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
 
         foreach (Transform child in this.transform) //recupere les enfants (tt les boutons)
         {
@@ -50,7 +48,7 @@ public class puzzlePlateBehavior : MonoBehaviour
         {
             if(this.currentButtonToPress != 0)
             {
-                this.audioManager.PlaySound("puzzle_bad");
+                AudioManager.instance.PlaySound("puzzle_bad");
             }
             this.currentButtonToPress = 0;
             foreach (GameObject button in this.buttons)
@@ -65,7 +63,7 @@ public class puzzlePlateBehavior : MonoBehaviour
                 door.GetComponent<door>().isOpen = true;
             }
 
-            this.audioManager.PlaySound("puzzle_solved");
+            AudioManager.instance.PlaySound("puzzle_solved");
 
             foreach (GameObject button in this.buttons)
             {

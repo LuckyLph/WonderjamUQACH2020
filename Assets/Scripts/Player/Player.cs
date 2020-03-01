@@ -27,14 +27,13 @@ public class Player : MonoBehaviour
     public float secBetweenSteps = 0.5f;
     private float secRemainingStep = 0f;
 
-    private AudioManager audioManager;
     private GameManager gm;
     private bool frenzyOn;
     private Weapon gatling;
 
     void Awake(){
 
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+        
 
         controls = new PlayerControls();
 
@@ -130,16 +129,16 @@ public class Player : MonoBehaviour
         switch (Random.Range(0,3))
         {
             case 0:
-                this.audioManager.PlaySound("player_step1");
+                AudioManager.instance.PlaySound("player_step1");
                 break;
             case 1:
-                this.audioManager.PlaySound("player_step2");
+                AudioManager.instance.PlaySound("player_step2");
                 break;
             case 2:
-                this.audioManager.PlaySound("player_step3");
+                AudioManager.instance.PlaySound("player_step3");
                 break;
             case 3:
-                this.audioManager.PlaySound("player_step4");
+                AudioManager.instance.PlaySound("player_step4");
                 break;
             default:
                 break;
@@ -174,8 +173,8 @@ public class Player : MonoBehaviour
         }
         else if(weapons[index].ammunition == 0)
         {
-            this.audioManager.StopSound("no_ammo"); //inutile?
-            this.audioManager.PlaySound("no_ammo");
+            AudioManager.instance.StopSound("no_ammo"); //inutile?
+            AudioManager.instance.PlaySound("no_ammo");
             DelayUntilNextShot = 60 / weapons[index].roundPerMin;
         }else{
             //animator.Play("Handgun_Shoot");
@@ -207,19 +206,19 @@ public class Player : MonoBehaviour
         switch (Random.Range(0,4))
         {
             case 0:
-                this.audioManager.PlaySound("fire_uzi1");
+                AudioManager.instance.PlaySound("fire_uzi1");
                 break;
             case 1:
-                this.audioManager.PlaySound("fire_uzi2");
+                AudioManager.instance.PlaySound("fire_uzi2");
                 break;
             case 2:
-                this.audioManager.PlaySound("fire_uzi3");
+                AudioManager.instance.PlaySound("fire_uzi3");
                 break;
             case 3:
-                this.audioManager.PlaySound("fire_uzi4");
+               AudioManager.instance.PlaySound("fire_uzi4");
                 break;
             case 4:
-                this.audioManager.PlaySound("fire_uzi5");
+               AudioManager.instance.PlaySound("fire_uzi5");
                 break;
             default:
                 break;

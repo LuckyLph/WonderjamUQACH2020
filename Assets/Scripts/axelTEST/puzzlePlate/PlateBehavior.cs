@@ -12,14 +12,12 @@ public class PlateBehavior : MonoBehaviour
 
     private SpriteRenderer render;
     private puzzlePlateBehavior puzzle;
-
-    private AudioManager audioManager;
+  
 
     void Awake()
     {
         this.render = this.gameObject.GetComponent<SpriteRenderer>();
         this.puzzle = this.GetComponentInParent<puzzlePlateBehavior>();
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
         this.render.sprite = this.button_up;
     }
 
@@ -38,7 +36,7 @@ public class PlateBehavior : MonoBehaviour
         this.render.sprite = this.button_down;
         this.isActive = true;
         //this.render.color = Color.blue;
-        this.audioManager.PlaySound("plate_activated");
+        AudioManager.instance.PlaySound("plate_activated");
         this.tellParent();
     }
 
@@ -46,7 +44,7 @@ public class PlateBehavior : MonoBehaviour
     {
         this.render.sprite = this.button_up;
         this.isActive = false;
-        this.audioManager.PlaySound("plate_activated");
+        AudioManager.instance.PlaySound("plate_activated");
         //this.render.color = Color.red;
     }
 

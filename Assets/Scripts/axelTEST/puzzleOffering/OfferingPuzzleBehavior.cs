@@ -22,8 +22,7 @@ public class OfferingPuzzleBehavior : MonoBehaviour
 
     public GameObject[] doorToOpen;
 
-
-    private AudioManager audioManager;
+  
 
     private void Awake()
     {
@@ -31,7 +30,6 @@ public class OfferingPuzzleBehavior : MonoBehaviour
         this.GenerateRandomPureColors();
         this.SpawnZone = this.transform.GetChild(0).gameObject;
         this.PlacementZone = this.transform.GetChild(1).gameObject;
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
 
     }
 
@@ -110,6 +108,6 @@ public class OfferingPuzzleBehavior : MonoBehaviour
             door.GetComponent<door>().isOpen = true;
         }
 
-        this.audioManager.PlaySound("puzzle_solved");
+        AudioManager.instance.PlaySound("puzzle_solved");
     }
 }
