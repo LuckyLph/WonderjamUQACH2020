@@ -9,17 +9,15 @@ public class Enemy : MonoBehaviour
   public GameObject dropVie;
   public GameObject dropFrenzy;
   private GameManager gameManager;
-  private AudioManager audioManager;
 
   private void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
-    audioManager = FindObjectOfType<AudioManager>();
   }
 
   public void TakeDamage(int damage)
   {
-    audioManager.PlaySound("zombie_hit");
+    AudioManager.instance.PlaySound("zombie_hit");
     health -= damage;
     if (health <= 0)
     {

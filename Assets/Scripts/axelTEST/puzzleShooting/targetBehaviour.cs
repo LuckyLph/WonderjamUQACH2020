@@ -29,8 +29,7 @@ public class targetBehaviour : MonoBehaviour
 
     private SpriteRenderer whiteChild1;
     private SpriteRenderer whiteChild2;
-
-    private AudioManager audioManager;
+  
 
 
     void Awake()
@@ -38,7 +37,6 @@ public class targetBehaviour : MonoBehaviour
         this.parentScript = this.GetComponentInParent<ShootPuzzleBehaviour>();
         this.whiteChild1 = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.whiteChild2 = this.transform.GetChild(2).GetComponent<SpriteRenderer>();
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
 
     }
     public void TakeDamage(int damage)
@@ -49,7 +47,7 @@ public class targetBehaviour : MonoBehaviour
             return;
         }
 
-        this.audioManager.PlaySound("hit_target");
+        AudioManager.instance.PlaySound("hit_target");
 
         if (!this.isActive)
         {
