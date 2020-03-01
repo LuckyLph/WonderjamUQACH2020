@@ -7,6 +7,8 @@ public class AI_Spawner : MonoBehaviour
   public int NumberZombiesFaibles { get; set; }
   public int NumberZombiesForts { get; set; }
 
+  private int compteur = 0;
+
   // Start is called before the first frame update
   private void Awake()
   {
@@ -27,5 +29,6 @@ public class AI_Spawner : MonoBehaviour
       GameObject z = Instantiate(zombieFort) as GameObject;
       z.transform.position = transform.position;
     }
+
   }
 }
