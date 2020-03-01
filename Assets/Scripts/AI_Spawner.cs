@@ -10,7 +10,9 @@ public class AI_Spawner : MonoBehaviour
   // Start is called before the first frame update
   private void Awake()
   {
-    Spawn_Zombies();
+    NumberZombiesFaibles = 1;
+    NumberZombiesForts = 0;
+    //Spawn_Zombies();
   }
 
   public void Spawn_Zombies()

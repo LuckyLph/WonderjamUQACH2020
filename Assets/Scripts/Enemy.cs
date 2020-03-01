@@ -22,10 +22,11 @@ public class Enemy : MonoBehaviour
     health -= damage;
     if (health <= 0)
     {
-      gameManager.score += score;
+      gameManager.Score += score;
       Destroy(gameObject);
       DropMunition();
       DropVie();
+      DropFrenzy();
     }
   }
 
@@ -51,11 +52,14 @@ public class Enemy : MonoBehaviour
 
   private void DropFrenzy()
   {
-    float rand = Random.value;
-    if (rand <= gameManager.CoeficientSpawnDropVie)
+    if (!gameManager.FrenzyOn)
     {
-      GameObject d = Instantiate(dropFrenzy) as GameObject;
-      d.transform.position = transform.position;
+      float rand = Random.value;
+      if (rand <= gameManager.CoeficientSpawnDropVie)
+      {
+        GameObject d = Instantiate(dropFrenzy) as GameObject;
+        d.transform.position = transform.position;
+      }
     }
   }
 }
