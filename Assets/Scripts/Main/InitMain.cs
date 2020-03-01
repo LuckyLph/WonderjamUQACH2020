@@ -14,5 +14,10 @@ public class InitMain : MonoBehaviour
         //{
         //    Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("HUD"));
         //}
+
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    Finder.ManageMenus.NotifyGameOver();
+        //}
     }
 }
