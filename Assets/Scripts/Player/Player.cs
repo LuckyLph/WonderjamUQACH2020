@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     Weapon weapon;
     private int index = 0;
     private string[] weapons = {"Handgun", "Rifle"};
-    [SerializeField]
     private Weapon[] varWeapon = {new Weapon(230, 2, 2, 20, 1, 100), new Weapon(1000, 5, 1, 20, 1, 1000)};
     private string currentWeapon;
     PlayerControls controls;
