@@ -30,13 +30,15 @@ public class pickPowerUp : MonoBehaviour
                     Debug.Log(this.tag);
                     break;
                 case "ammoDrop":
-                    //WIP
+                    foreach (var weap in this.pl.weapons)
+                    {
+                        weap.ammunition += 20;
+                    }
                     Debug.Log(this.tag);
-
                     break;
                 case "frenzyDrop":
                     Debug.Log(this.tag);
-                    //WIP
+                    this.pl.frenzy+=10;
                     break;
                 default:
                     break;

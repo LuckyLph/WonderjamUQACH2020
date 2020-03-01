@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public int index = 0;
     public List<Weapon> weapons = new List<Weapon>();
     //public Weapon[] varWeapon = {new Weapon("Handgun", 230, 2, 2, 20, 1, 100), new Weapon("Rifle", 1000, 5, 1, 20, 1, 1000), new Weapon("Shotgun", 60, 30, 3, 20, 0.2f, 200)};
-    private string currentWeapon;
+    public string currentWeapon;
+    public int frenzy = 0;
     PlayerControls controls;
     private ScreenShake shake;
     private Transform firePoint;
@@ -27,6 +28,9 @@ public class Player : MonoBehaviour
     private float secRemainingStep = 0f;
 
     private AudioManager audioManager;
+    private GameManager gm;
+    private bool frenzyOn;
+    private Weapon gatling;
 
     void Awake(){
 
@@ -50,11 +54,14 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.gatling = new Weapon("Gatling", 5000, 5, 5, 20, 1, 100000);
+
         weapons.Add(new Weapon("Handgun", 230, 2, 2, 20, 1, 100));
         currentWeapon = weapons[index].weaponName;
         rb = GetComponent<Rigidbody2D>();
         firePoint = transform.GetChild(0).transform;
         shake = GameObject.Find("Main Camera").GetComponent<ScreenShake>();
+        this.gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -80,6 +87,21 @@ public class Player : MonoBehaviour
         {
             ChooseWeapon(false);
         }
+
+        this.gm.Frenzy = this.frenzy;
+        this.frenzyOn = this.gm.FrenzyOn;
+
+        if (this.frenzyOn)
+        {
+            this.weapons.Add(this.gatling);
+        } else if(this.weapons.Contains(this.gatling))
+        {
+            this.weapons.Remove(this.gatling);
+        }
+
+
+
+
     }
 
     void Movement(){
@@ -156,6 +178,7 @@ public class Player : MonoBehaviour
             DelayUntilNextShot = 60 / weapons[index].roundPerMin;
         }else{
             //animator.Play("Handgun_Shoot");
+            //PLAY GUN SOUND IFGUN AND PLAY LOTS A GUNS SHOOT IF SHOOTGUN
             this.playRandomUziSound();
             shake.TriggerShake();
             DelayUntilNextShot = 60/weapons[index].roundPerMin;
@@ -226,6 +249,7 @@ public class Player : MonoBehaviour
         if (this.health <= 0)
         {
             Destroy(this.gameObject);
+            Harmony.Finder.ManageMenus.NotifyGameOver();
         }
     }
 
