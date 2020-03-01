@@ -11,6 +11,7 @@ public class followPlayer : MonoBehaviour
     void Start()
     {
         this.mainCamera = GameObject.Find("Main Camera");
+        this.mainCamera.GetComponent<ScreenShake>().player = this.gameObject;
         this.originalPosPlay = this.transform.position;
         this.mainCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.mainCamera.transform.position.z);
         this.originalPosCam = this.mainCamera.transform.position;

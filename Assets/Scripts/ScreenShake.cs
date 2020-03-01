@@ -9,7 +9,7 @@ public class ScreenShake : MonoBehaviour
     // Desired duration of the shake effect
     private float shakeDurationRemaining, dampingShake;
 
-    private GameObject player;
+    public GameObject player;
 
     public float shakeDurationBase, shakeMagnitude, dampingSpeed;
 
@@ -32,7 +32,7 @@ public class ScreenShake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.player = GameObject.Find("Player");
+        //this.player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
