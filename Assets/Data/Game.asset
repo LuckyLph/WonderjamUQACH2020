@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Game
   m_EditorClassIdentifier: 
   scenes:
-  - sceneAsset: {fileID: 102900000, guid: 473c92311141d3942a7c325f4c2ebbe2, type: 3}
-    sceneName: Main
   - sceneAsset: {fileID: 102900000, guid: 8510ba740162a7a428cdc252d04f808d, type: 3}
     sceneName: Game
+  - sceneAsset: {fileID: 102900000, guid: 473c92311141d3942a7c325f4c2ebbe2, type: 3}
+    sceneName: Main
   - sceneAsset: {fileID: 102900000, guid: cc078ee45f899c649ac451d245f53310, type: 3}
     sceneName: HUD
   - sceneAsset: {fileID: 102900000, guid: 9608de698bbf92d44968d06a3cb8887e, type: 3}
