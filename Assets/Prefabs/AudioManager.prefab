@@ -191,3 +191,10 @@ MonoBehaviour:
     pitch: 1
     timeToStart: 0
     source: {fileID: 0}
+  - name: ennemie_punch
+    audioClip: {fileID: 8300000, guid: 1407733607453d547aca14380d51d34c, type: 3}
+    shouldLoop: 0
+    volume: 1
+    pitch: 1
+    timeToStart: 0
+    source: {fileID: 0}
