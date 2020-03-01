@@ -20,7 +20,7 @@ public class OfferingPuzzleBehavior : MonoBehaviour
     [SerializeField]
     public List<GameObject> jewels = new List<GameObject>();
 
-    public GameObject doorToOpen;
+    public GameObject[] doorToOpen;
 
 
     private AudioManager audioManager;
@@ -105,7 +105,10 @@ public class OfferingPuzzleBehavior : MonoBehaviour
             }
         }
         this.puzzleSolved = true;
-        this.doorToOpen.GetComponent<door>().isOpen = true;
+        foreach (GameObject door in this.doorToOpen)
+        {
+            door.GetComponent<door>().isOpen = true;
+        }
 
         this.audioManager.PlaySound("puzzle_solved");
     }
