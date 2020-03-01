@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     }
     void Start()
     {
-        Destroy(gameObject, player.varWeapon[player.index].bulletTime);
+        Destroy(gameObject, player.weapons[player.index].bulletTime);
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision)
@@ -44,12 +44,12 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-            other.gameObject.GetComponent<Enemy>().TakeDamage(player.varWeapon[player.index].bulletDamage);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(player.weapons[player.index].bulletDamage);
         }
         else if(other.gameObject.tag == "Target")
         {
             targetBehaviour target = other.gameObject.GetComponent<targetBehaviour>();
-            target.TakeDamage(player.varWeapon[player.index].bulletDamage);
+            target.TakeDamage(player.weapons[player.index].bulletDamage);
             Destroy(gameObject);
         }
         else if (other.gameObject.tag != "Player")
