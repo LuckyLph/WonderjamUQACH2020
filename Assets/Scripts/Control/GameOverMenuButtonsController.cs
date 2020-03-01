@@ -3,18 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Harmony;
 
-public class PauseMenuButtonController : MonoBehaviour
+public class GameOverMenuButtonsController : MonoBehaviour
 {
-    [SerializeField] GameObject restartGroup;
-    [SerializeField] GameObject quitGroup;
-    [SerializeField] GameObject menu;
-
-    public void UnPause()
-    {
-        restartGroup.SetActive(false);
-        quitGroup.SetActive(false);
-        menu.SetActive(false);
-    }
 
     public void Restart()
     {
@@ -23,6 +13,8 @@ public class PauseMenuButtonController : MonoBehaviour
 
     public void QuitGame()
     {
+        Finder.ManageMenus.IsGameOverMenuOpen = false;
+        Time.timeScale = 1;
         Finder.SceneBundleLoader.Switch(Finder.SceneBundlesReference.GetSceneBundleByName("MainMenu"));
     }
 }

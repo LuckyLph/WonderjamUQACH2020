@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7972852747542439829}
   - component: {fileID: 7972852747542439825}
   - component: {fileID: 1666143144}
+  - component: {fileID: 1207455334}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -149,13 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb79eabf0c71f3044ab59b5c83fbf1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  spreadRange: 4
+  index: 0
+  health: 10
   bulletPrefab: {fileID: 1762872342426775722, guid: 73a244bfe14d04c4e9dfba7ac99ef3d7,
     type: 3}
-  health: 10
-  ammunition: 2147483647
-  roundPerMin: 230
+  speed: 5
+  animator: {fileID: 1207455334}
+  secBetweenSteps: 0.506
 --- !u!61 &7972852747542439825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,3 +196,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCarryingJewel: 0
+--- !u!95 &1207455334
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972852747542439830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd1461e1d28d6d941b6b1c0e02a1083b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
