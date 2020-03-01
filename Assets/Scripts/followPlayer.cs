@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class followPlayer : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject mainCamera;
     private Vector3 originalPosCam;
     private Vector3 originalPosPlay;
     // Start is called before the first frame update
     void Start()
     {
-        this.originalPosPlay = this.player.transform.position;
-        this.transform.position = new Vector3(this.player.transform.position.x, this.player.transform.position.y, this.transform.position.z);
-        this.originalPosCam = this.transform.position;
-        
+        this.mainCamera = GameObject.Find("Main Camera");
+        this.originalPosPlay = this.transform.position;
+        this.mainCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.mainCamera.transform.position.z);
+        this.originalPosCam = this.mainCamera.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = this.originalPosPlay - this.player.transform.position;
-        Debug.Log(move);
-        Debug.Log(this.transform.position);
+        Vector3 move = this.originalPosPlay - this.transform.position;
         if (move != Vector3.zero)
         {
-            this.transform.position = this.originalPosCam - move;
+            this.mainCamera.transform.position = this.originalPosCam - move;
         }
     }
 }
