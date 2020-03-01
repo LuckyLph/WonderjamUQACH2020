@@ -1,35 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 0;
+  public int health = 0;
+  public GameObject dropMunition;
+  public GameObject dropVie;
+  private GameManager gameManager;
+  private AudioManager audioManager;
 
-    private AudioManager audioManager;
+  private void Awake()
+  {
+    gameManager = FindObjectOfType<GameManager>();
+    audioManager = FindObjectOfType<AudioManager>();
+  }
 
-    private void Awake()
+  public void TakeDamage(int damage)
+  {
+    audioManager.PlaySound("zombie_hit");
+    health -= damage;
+    if (health <= 0)
     {
-        this.audioManager = GameObject.FindObjectOfType<AudioManager>();
+      Destroy(gameObject);
+      DropMunition();
+      DropVie();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  }
 
-    // Update is called once per frame
-    void Update()
+  private void DropMunition()
+  {
+    float rand = Random.value;
+    if (rand <= gameManager.CoeficientSpawnDropMunition)
     {
-        
+      GameObject d = Instantiate(dropMunition) as GameObject;
+      d.transform.position = transform.position;
     }
+  }
 
-    public void TakeDamage(int damage){
-        this.audioManager.PlaySound("zombie_hit");
-        this.health -= damage;
-        if (this.health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+  private void DropVie()
+  {
+    float rand = Random.value;
+    if (rand <= gameManager.CoeficientSpawnDropVie)
+    {
+      GameObject d = Instantiate(dropVie) as GameObject;
+      d.transform.position = transform.position;
     }
+  }
 }

@@ -111,7 +111,8 @@ namespace Harmony
         /// <param name="sceneBundle">Scene Bundle</param>
         public void Reload(SceneBundle sceneBundle)
         {
-            //Switch(sceneBundle);
+            Unload(sceneBundle);
+            Load(sceneBundle);
         }
 
         private SceneBundle GetCurrentlyLoadedScenes()

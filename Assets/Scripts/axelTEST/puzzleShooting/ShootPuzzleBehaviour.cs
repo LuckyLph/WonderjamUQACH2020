@@ -12,6 +12,8 @@ public class ShootPuzzleBehaviour : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public GameObject doorToOpen;
+
 
     void Awake()
     {
@@ -48,6 +50,7 @@ public class ShootPuzzleBehaviour : MonoBehaviour
         foreach (GameObject target in this.targets)
         {
             target.GetComponent<targetBehaviour>().puzzleSolved = true;
+            this.doorToOpen.GetComponent<door>().isOpen = true;
             target.GetComponent<SpriteRenderer>().color = Color.yellow;
             target.transform.GetChild(1).GetComponent<SpriteRenderer>().color = Color.yellow;
         }
