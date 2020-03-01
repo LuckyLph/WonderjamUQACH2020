@@ -47,6 +47,7 @@ public class ScreenShake : MonoBehaviour
             transform.localPosition = initialPosition;
         }
         */
+        this.initialPosition = this.transform.position;
     }
 
     public void TriggerShake() {
