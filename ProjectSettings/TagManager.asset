@@ -10,10 +10,9 @@ TagManager:
   - JewelPlace
   - Enemy
   - Target
-  - lifeDrop
-  - ammoDrop
-  - frenzyDrop
-  - Walls
+  - Weapon
+  - Shotgun
+  - Rifle
   layers:
   - Default
   - TransparentFX
@@ -26,8 +25,8 @@ TagManager:
   - AI_Attack
   - AI
   - Player
-  - trigger
-  - walls
+  - 
+  - 
   - 
   - 
   - 
