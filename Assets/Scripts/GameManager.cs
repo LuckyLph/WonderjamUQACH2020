@@ -12,21 +12,28 @@ public class GameManager : MonoBehaviour
 
   public float coeficientSpawnDropMunition;
   public float coeficientSpawnDropVie;
+  public float coeficientSpawnDropFrenzy;
   public float CoeficientSpawnDropMunition { get; set; }
   public float CoeficientSpawnDropVie { get; set; }
+  public float CoeficientSpawnDropFrenzy { get; set; }
   private float coeficientSpawnDropMunitionStable;
   private float coeficientSpawnDropVieStable;
+  private float coeficientSpawnDropFrenzyStable;
+
+  public int score;
 
   private float formuleSpawnZombiesFaible;
   private float formuleSpawnZombiesForts;
 
-  private void Start()
+  private void Awake()
   {
     InvokeRepeating("UpdateFormula", 1f, 1f);
     coeficientSpawnZombiesFaiblesStable = coeficientSpawnZombiesFaibles;
     coeficientSpawnZombiesFortsStable = coeficientSpawnZombiesForts;
     coeficientSpawnDropMunitionStable = 1 - coeficientSpawnDropMunition;
     coeficientSpawnDropVieStable = 1 - coeficientSpawnDropVie;
+    coeficientSpawnDropFrenzyStable = 1 - coeficientSpawnDropFrenzy;
+    score = 0;
   }
 
   private void UpdateFormula()
@@ -46,5 +53,7 @@ public class GameManager : MonoBehaviour
     coeficientSpawnDropMunition -= coeficientSpawnDropMunitionStable;
     CoeficientSpawnDropVie = 0.1f* ((1 + coeficientSpawnDropVie) / coeficientSpawnDropVie);
     coeficientSpawnDropVie -= coeficientSpawnDropVieStable;
+    CoeficientSpawnDropFrenzy = 0.1f * ((1 + coeficientSpawnDropFrenzy) / coeficientSpawnDropFrenzy);
+    coeficientSpawnDropFrenzy -= coeficientSpawnDropFrenzyStable;
   }
 }
