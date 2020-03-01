@@ -10,8 +10,10 @@ public class followPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.originalPosCam = this.transform.position;
         this.originalPosPlay = this.player.transform.position;
+        this.transform.position = new Vector3(this.player.transform.position.x, this.player.transform.position.y, this.transform.position.z);
+        this.originalPosCam = this.transform.position;
+        
     }
 
     // Update is called once per frame

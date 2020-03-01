@@ -9,6 +9,8 @@ public class ScreenShake : MonoBehaviour
     // Desired duration of the shake effect
     private float shakeDurationRemaining, dampingShake;
 
+    private GameObject player;
+
     public float shakeDurationBase, shakeMagnitude, dampingSpeed;
 
     [Range(0.001f,0.2f)]
@@ -30,7 +32,7 @@ public class ScreenShake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        this.player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -47,7 +49,11 @@ public class ScreenShake : MonoBehaviour
             transform.localPosition = initialPosition;
         }
         */
-        this.initialPosition = this.transform.position;
+        this.initialPosition = new Vector3(this.player.transform.position.x, this.player.transform.position.y, this.transform.position.z);
+        //this.initialPosition = this.transform.position;
+
+
+
     }
 
     public void TriggerShake() {
@@ -69,6 +75,8 @@ public class ScreenShake : MonoBehaviour
         this.isShaking = true;
         while (shakeDurationRemaining > 0)
         {
+            //this.initialPosition = GameObject.Find("Player").transform.position;
+
             transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude * shakeDurationRemaining * dampingShake;
             shakeDurationRemaining -= Time.deltaTime * dampingSpeed;
             this.shakeDurationRemaining -= this.secondBetweenShakes;
